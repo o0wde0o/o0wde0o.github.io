@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>手写数字识别</title>
+  <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      background: linear-gradient(to bottom right, #e0f7ff, #cce5ff);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    h1, p {
+      text-align: center;
+      color: #2a4365;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
+      padding: 20px;
+      flex: 1;
+    }
+    .panel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    canvas {
+      border: 2px solid #333;
+      background: white;
+      cursor: crosshair;
+      width: 280px;
+      height: 280px;
+    }
+    .right {
+      font-size: 6em;
+      width: 200px;
+      height: 200px;
+      border-radius: 100px;
+      background: #e0f0ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    .glow {
+      box-shadow: 0 0 40px #3182ce;
+      transition: box-shadow 0.3s ease-in-out;
+    }
+    #result {
+      color: #000;
+      background: transparent;
+    }
+    .barchart {
+      display: flex;
+      align-items: flex-end;
+      height: 200px;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .bar-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .bar {
+      width: 30px;
+      background-color: #3182ce;
+      transition: height 0.3s ease;
+      border-radius: 4px 4px 0 0;
+    }
+    .bar-label {
+      margin-top: 5px;
+      font-weight: bold;
+    }
+    button {
+      margin-top: 15px;
+      font-size: 1em;
+      padding: 8px 16px;
+      background-color: #3182ce;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2c5282;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #f8f9fa;
+      border-top: 1px solid #ddd;
+    }
+    footer p {
+      margin: 5px 0;
+      color: #4a5568;
+    }
+  </style>
+</head>
+<body>
+  <h1>手写数字识别演示</h1>
+  <p>请在左侧画布中手写数字，识别结果将在右侧展示</p>
+  <div class="container">
+    <div class="panel">
+      <canvas id="canvas" width="280" height="280"></canvas>
+      <button onclick="clearCanvas()">清空</button>
+    </div>
+    <div class="panel">
+      <div class="barchart" id="barchart"></div>
+    </div>
+    <div class="panel">
+      <div class="right" id="resultWrapper">
+        <div id="result">?</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>灵感来源 <a href="https://www.i-am.ai/neural-numbers.html" target="_blank">Neural Numbers</a></p>
+    <p>模型地址 <a href="https://github.com/onnx/models" target="_blank">ONNX Model Zoo</a></p>
+  </footer>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const barchart = document.getElementById('barchart');
+    let drawing = false;
+    let session = null;
+    let lastX, lastY;
+
+    // 修复鼠标偏移问题
+    function getCanvasPosition(e) {
+      const rect = canvas.getBoundingClientRect();
+      return {
+        x: (e.clientX - rect.left) * (canvas.width / rect.width),
+        y: (e.clientY - rect.top) * (canvas.height / rect.height)
+      };
+    }
+
+    // 初始化画布
+    function initCanvas() {
+      ctx.fillStyle = "white";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.lineWidth = 12;
+      ctx.lineCap = "round";
+      ctx.strokeStyle = "black";
+    }
+
+    initCanvas();
+
+    // 初始化柱状图
+    function initBarchart() {
+      barchart.innerHTML = '';
+      for (let i = 0; i < 10; i++) {
+        const barContainer = document.createElement('div');
+        barContainer.className = 'bar-container';
+        
+        const bar = document.createElement('div');
+        bar.className = 'bar';
+        bar.id = `bar-${i}`;
+        bar.style.height = '0px';
+        
+        const label = document.createElement('div');
+        label.className = 'bar-label';
+        label.textContent = i;
+        
+        barContainer.appendChild(bar);
+        barContainer.appendChild(label);
+        barchart.appendChild(barContainer);
+      }
+    }
+
+    initBarchart();
+
+    // 事件监听
+    canvas.addEventListener('mousedown', e => {
+      drawing = true;
+      const pos = getCanvasPosition(e);
+      lastX = pos.x;
+      lastY = pos.y;
+    });
+
+    canvas.addEventListener('mouseup', () => drawing = false);
+    canvas.addEventListener('mouseout', () => drawing = false);
+
+    canvas.addEventListener('mousemove', e => {
+      if (!drawing) return;
+      const pos = getCanvasPosition(e);
+      ctx.beginPath();
+      ctx.moveTo(lastX, lastY);
+      ctx.lineTo(pos.x, pos.y);
+      ctx.stroke();
+      lastX = pos.x;
+      lastY = pos.y;
+      throttlePredict();
+    });
+
+    function clearCanvas() {
+      initCanvas();
+      document.getElementById('result').innerText = '?';
+      document.getElementById('resultWrapper').classList.remove('glow');
+      resetBarchart();
+    }
+
+    function resetBarchart() {
+      for (let i = 0; i < 10; i++) {
+        document.getElementById(`bar-${i}`).style.height = '0px';
+      }
+    }
+
+    async function preprocessAndPredict() {
+      const sCanvas = document.createElement("canvas");
+      sCanvas.width = 28;
+      sCanvas.height = 28;
+      const sctx = sCanvas.getContext("2d");
+      sctx.drawImage(canvas, 0, 0, 28, 28);
+      let imageData = sctx.getImageData(0, 0, 28, 28);
+      let data = imageData.data;
+      let input = [];
+      for (let i = 0; i < 28 * 28; i++) {
+        input.push((255 - data[i * 4]) / 255);
+      }
+
+      // 中心化
+      let centerX = 0, centerY = 0, sum = 0;
+      for (let y = 0; y < 28; y++) {
+        for (let x = 0; x < 28; x++) {
+          const val = input[y * 28 + x];
+          centerX += x * val;
+          centerY += y * val;
+          sum += val;
+        }
+      }
+      if (sum > 0.01) {
+        centerX /= sum;
+        centerY /= sum;
+        const dx = Math.round(14 - centerX);
+        const dy = Math.round(14 - centerY);
+
+        const shifted = new Float32Array(784).fill(0);
+        for (let y = 0; y < 28; y++) {
+          for (let x = 0; x < 28; x++) {
+            const ny = y + dy;
+            const nx = x + dx;
+            if (nx >= 0 && nx < 28 && ny >= 0 && ny < 28) {
+              shifted[ny * 28 + nx] = input[y * 28 + x];
+            }
+          }
+        }
+        input = shifted;
+      }
+
+      const tensor = new ort.Tensor("float32", input, [1, 1, 28, 28]);
+      const output = await session.run({ [session.inputNames[0]]: tensor });
+      const result = output[session.outputNames[0]].data;
+      const maxVal = Math.max(...result); // 找到最高概率值
+      const prediction = result.indexOf(maxVal);
+
+      const resultDiv = document.getElementById('result');
+      const wrapper = document.getElementById('resultWrapper');
+
+     // 更新柱状图
+      const maxHeight = 200; // 柱状图最大高度
+
+    for (let i = 0; i < 10; i++) {
+      const bar = document.getElementById(`bar-${i}`);
+      // 按百分比显示，最高概率的柱子正好达到maxHeight
+      const height = (result[i] / maxVal) * maxHeight;
+      bar.style.height = `${height}px`;
+      bar.style.backgroundColor = i === prediction ? '#e53e3e' : '#3182ce';
+    }
+
+
+      if (maxVal > 0.5) {
+        resultDiv.innerText = prediction;
+        wrapper.classList.add('glow');
+      } else {
+        resultDiv.innerText = "❓";
+        wrapper.classList.remove('glow');
+      }
+    }
+
+    let throttleTimer = null;
+    function throttlePredict() {
+      if (throttleTimer) return;
+      throttleTimer = setTimeout(() => {
+        preprocessAndPredict();
+        throttleTimer = null;
+      }, 250);
+    }
+
+    // 加载模型
+    ort.InferenceSession.create("assets/mnist-12.onnx").then(s => {
+      session = s;
+    }).catch(err => {
+      console.error("模型加载失败:", err);
+      document.getElementById('result').innerText = "模型加载失败";
+    });
+  </script>
+</body>
+</html>
