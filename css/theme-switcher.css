@@ -1,0 +1,18 @@
+/* 默认浅色模式：覆盖所有页面顶部 banner 背景图 */
+#page-header {
+    background-image: url('https://cdn.jsdelivr.net/gh/o0wde0o/blog-image@main/background/wallhaven-wqery6-light.jpg') !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+  
+  /* 深色模式下的头图 */
+  [data-theme="dark"] #page-header {
+    background-image: url('https://cdn.jsdelivr.net/gh/o0wde0o/blog-image@main/background/wallhaven-wqery6-dark.jpg') !important;
+  }
+  
+  /* 保证头图透明，不遮挡背景 */
+  #page-header::before {
+    background: transparent !important;
+  }
+  

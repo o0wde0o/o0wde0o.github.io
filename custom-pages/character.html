@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>字符识别演示Demo</title>
+  <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      background: linear-gradient(to bottom right, #e0f7ff, #cce5ff);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    h1, p {
+      text-align: center;
+      color: #2a4365;
+      padding: 0 15px;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 15px 10px;
+    }
+    canvas {
+      border: 2px solid #333;
+      background: white;
+      cursor: crosshair;
+      width: min(280px, 90vw);
+      height: min(280px, 90vw);
+      touch-action: none;
+    }
+    canvas.disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    .right {
+      width: min(200px, 40vw);
+      height: min(200px, 40vw);
+      border-radius: 50%;
+      background: #e0f0ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 15px auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    .glow {
+      box-shadow: 0 0 40px #3182ce;
+    }
+    #result {
+      font-size: min(6em, 15vw);
+    }
+    button {
+      margin-top: 10px;
+      font-size: min(1em, 4vw);
+      padding: 8px 16px;
+      background-color: #3182ce;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+    #loading-message {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      background: #3182ce;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0% { opacity: 0.8; }
+      50% { opacity: 1; }
+      100% { opacity: 0.8; }
+    }
+  </style>
+</head>
+<body>
+  <div id="loading-message">模型首次加载较慢，请耐心等待...</div>
+
+  <h1>字符识别演示Demo</h1>
+  <p>请在下方画布中手写一个字符，识别结果显示在下方</p>
+
+  <div class="container">
+    <canvas id="canvas" width="280" height="280" class="disabled"></canvas>
+    <button onclick="clearCanvas()">清空</button>
+    <div class="right" id="resultWrapper"><div id="result">?</div></div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    const resultDiv = document.getElementById("result");
+    const wrapper = document.getElementById("resultWrapper");
+    let drawing = false;
+    let session = null;
+    let lastX, lastY;
+
+    // === 初始化画布 ===
+    function initCanvas() {
+      ctx.fillStyle = "white";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.lineWidth = 8; // ← 修改此值可以改变笔刷粗细
+      ctx.lineCap = "round";
+      ctx.strokeStyle = "black";
+    }
+
+    function clearCanvas() {
+      initCanvas();
+      resultDiv.innerText = "?";
+      wrapper.classList.remove("glow");
+    }
+
+    function getCanvasPosition(e) {
+      const rect = canvas.getBoundingClientRect();
+      const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+      const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+      return {
+        x: (clientX - rect.left) * (canvas.width / rect.width),
+        y: (clientY - rect.top) * (canvas.height / rect.height)
+      };
+    }
+
+    function startDrawing(e) {
+      if (!session) {
+        alert("模型正在加载，请稍候...");
+        return;
+      }
+      e.preventDefault();
+      drawing = true;
+      const pos = getCanvasPosition(e);
+      lastX = pos.x;
+      lastY = pos.y;
+    }
+
+    function draw(e) {
+      e.preventDefault();
+      if (!drawing) return;
+      const pos = getCanvasPosition(e);
+      ctx.beginPath();
+      ctx.moveTo(lastX, lastY);
+      ctx.lineTo(pos.x, pos.y);
+      ctx.stroke();
+      lastX = pos.x;
+      lastY = pos.y;
+      throttlePredict();
+    }
+
+    function stopDrawing() {
+      drawing = false;
+    }
+
+    async function preprocessAndPredict() {
+      if (!session) return;
+      try {
+        const sCanvas = document.createElement("canvas");
+        sCanvas.width = 28;
+        sCanvas.height = 28;
+        const sctx = sCanvas.getContext("2d");
+        sctx.drawImage(canvas, 0, 0, 28, 28);
+        const imageData = sctx.getImageData(0, 0, 28, 28);
+        const data = imageData.data;
+
+        let input = new Float32Array(28 * 28);
+        for (let i = 0; i < 28 * 28; i++) {
+          const gray = (255 - data[i * 4]) / 255;
+          // === 标准化操作 ===
+          const normalized = (gray - 0.1307) / 0.3081;  // mean/std 参考 EMNIST
+          input[i] = normalized;
+        }
+
+        // === 中心化处理 ===
+        let centerX = 0, centerY = 0, sum = 0;
+        for (let y = 0; y < 28; y++) {
+          for (let x = 0; x < 28; x++) {
+            const val = input[y * 28 + x];
+            const raw = (val * 0.3081 + 0.1307);  // 反标准化计算亮度用于定位
+            centerX += x * raw;
+            centerY += y * raw;
+            sum += raw;
+          }
+        }
+
+        if (sum > 0.01) {
+          centerX /= sum;
+          centerY /= sum;
+          const dx = Math.round(14 - centerX);
+          const dy = Math.round(14 - centerY);
+          const shifted = new Float32Array(28 * 28).fill(0);
+          for (let y = 0; y < 28; y++) {
+            for (let x = 0; x < 28; x++) {
+              const nx = x + dx;
+              const ny = y + dy;
+              if (nx >= 0 && nx < 28 && ny >= 0 && ny < 28) {
+                shifted[ny * 28 + nx] = input[y * 28 + x];
+              }
+            }
+          }
+          input = shifted;
+        }
+
+        const tensor = new ort.Tensor("float32", input, [1, 1, 28, 28]);
+        const output = await session.run({ [session.inputNames[0]]: tensor });
+        const result = output[session.outputNames[0]].data;
+
+        const maxVal = Math.max(...result);
+        const predictionIndex = result.indexOf(maxVal);
+        let predictedChar = "?";
+
+        if (predictionIndex < 10) predictedChar = predictionIndex.toString();
+        else if (predictionIndex < 36) predictedChar = String.fromCharCode(65 + predictionIndex - 10);
+        else if (predictionIndex < 62) predictedChar = String.fromCharCode(97 + predictionIndex - 36);
+
+        if (maxVal > 0.5) {
+          resultDiv.innerText = predictedChar;
+          wrapper.classList.add("glow");
+        } else {
+          resultDiv.innerText = "❓";
+          wrapper.classList.remove("glow");
+        }
+
+      } catch (err) {
+        console.error("预测出错:", err);
+        resultDiv.innerText = "出错";
+      }
+    }
+
+    let throttleTimer = null;
+    function throttlePredict() {
+      if (throttleTimer) return;
+      throttleTimer = setTimeout(() => {
+        preprocessAndPredict();
+        throttleTimer = null;
+      }, 250);
+    }
+
+    // 初始化
+    initCanvas();
+
+    // 模型加载
+    ort.InferenceSession.create("assets/emnist.onnx").then(s => {
+      session = s;
+      document.getElementById("loading-message").textContent = "模型加载完成，可以开始绘制";
+      setTimeout(() => {
+        const m = document.getElementById("loading-message");
+        if (m) m.remove();
+      }, 2000);
+      canvas.classList.remove("disabled");
+    }).catch(err => {
+      console.error("模型加载失败:", err);
+      const m = document.getElementById("loading-message");
+      m.textContent = "模型加载失败，请刷新页面重试";
+      m.style.background = "#e53e3e";
+    });
+
+    // 事件监听
+    canvas.addEventListener("mousedown", startDrawing);
+    canvas.addEventListener("mousemove", draw);
+    canvas.addEventListener("mouseup", stopDrawing);
+    canvas.addEventListener("mouseout", stopDrawing);
+    canvas.addEventListener("touchstart", startDrawing);
+    canvas.addEventListener("touchmove", draw);
+    canvas.addEventListener("touchend", stopDrawing);
+  </script>
+</body>
+</html>

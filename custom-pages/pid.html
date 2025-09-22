@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>平衡摆控制</title>
+  <style>
+    body {
+      margin: 0;
+      background: #f0f8ff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    canvas {
+      display: block;
+      margin: 20px auto;
+      background: white;
+      border: 1px solid #ccc;
+    }
+    .control-panel {
+      margin: 10px auto;
+      padding: 15px;
+      background: #e6f2ff;
+      border-radius: 5px;
+      width: 80%;
+      max-width: 600px;
+    }
+    button {
+      margin: 5px;
+      padding: 8px 15px;
+      background: #4a6baf;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .pid-params {
+      display: flex;
+      justify-content: space-around;
+      margin: 10px 0;
+    }
+    .pid-param {
+      background: #d6e4ff;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+  <h1>平衡摆控制系统</h1>
+  <div class="control-panel">
+    <div class="pid-params">
+      <div class="pid-param">P: <span id="pValue">0.8</span></div>
+      <div class="pid-param">I: <span id="iValue">0.000</span></div>
+      <div class="pid-param">D: <span id="dValue">0.00</span></div>
+    </div>
+    <div>
+      <button id="startBtn">开始运动</button>
+      <button id="resetBtn">重置系统</button>
+    </div>
+  </div>
+  <canvas id="canvas" width="1400" height="400"></canvas>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    const scale = 100;
+    const g = 5;
+    const originY = canvas.height * 0.7;
+
+    let state = {
+      cart: { x: 0, v: 0, width: 0.5 },
+      pole: { length: 0.6, angle: Math.PI, angularV: 0, mass: 0.005 },
+      lastTime: performance.now() / 1000
+    };
+
+    class EnhancedPID {
+      constructor(kp, ki, kd) {
+        this.setParams(kp, ki, kd);
+        this.reset();
+      }
+      setParams(kp, ki, kd) {
+        this.kp = kp;
+        this.ki = ki;
+        this.kd = kd;
+        document.getElementById('pValue').textContent = this.kp.toFixed(2);
+        document.getElementById('iValue').textContent = this.ki.toFixed(3);
+        document.getElementById('dValue').textContent = this.kd.toFixed(2);
+      }
+      reset() {
+        this.integral = 0;
+        this.prevError = 0;
+        this.lastTime = state.lastTime;
+      }
+      update(error) {
+        const now = state.lastTime;
+        const dt = Math.min(0.1, now - this.lastTime);
+        this.lastTime = now;
+        this.integral += error * dt;
+        this.integral = Math.max(-2, Math.min(2, this.integral));
+        const derivative = dt > 0 ? (error - this.prevError) / dt : 0;
+        this.prevError = error;
+        return this.kp * error + this.ki * this.integral + this.kd * derivative;
+      }
+    }
+
+    const pid = new EnhancedPID(6, 0.0, 0.0);
+
+    let phase = "WAITING";
+    let lastControlTime = 0;
+    let moveQueue = [];
+    let currentMove = null;
+
+    function startPhase(newPhase) {
+      phase = newPhase;
+      if (newPhase === "PID_CONTROL") pid.reset();
+    }
+
+    function scheduleMove(targetX, duration) {
+      const startX = state.cart.x;
+      const totalD = targetX - startX;
+      moveQueue.push({
+        startTime: null,
+        duration,
+        startX,
+        targetX,
+        totalD
+      });
+    }
+
+    function processMoveTask(now) {
+      if (!currentMove && moveQueue.length > 0) {
+        currentMove = moveQueue.shift();
+        currentMove.startTime = now;
+      }
+      if (!currentMove) return;
+
+      const t = now - currentMove.startTime;
+      const T = currentMove.duration;
+      const D = currentMove.totalD;
+
+      if (t >= T) {
+        state.cart.x = currentMove.targetX;
+        state.cart.v = 0;
+        currentMove = null;
+        return;
+      }
+
+      const a = (4 * Math.abs(D)) / (T * T);
+      let v = t < T / 2 ? a * t : a * (T - t);
+      state.cart.v = v * Math.sign(D);
+    }
+
+    function controlSystem() {
+      const now = state.lastTime;
+      if (now - lastControlTime < 0.01) return;
+      lastControlTime = now;
+
+      if (phase === "PID_CONTROL") {
+        const error = Math.PI - state.pole.angle;
+        let control = pid.update(error) * 0.6;
+        control = Math.max(-2.5, Math.min(2.5, control));
+        state.cart.v = control;
+      } else if (phase === "MOVING") {
+        const hasMoveTasks = moveQueue.length > 0 || currentMove !== null;
+        if (!hasMoveTasks) {
+          startPhase("PID_CONTROL");
+        } else {
+          processMoveTask(now);
+        }
+      }
+    }
+
+    function updatePhysics(dt) {
+      const { cart, pole } = state;
+      const maxStep = 0.005;
+      const steps = Math.ceil(dt / maxStep);
+      const stepSize = dt / steps;
+
+      for (let i = 0; i < steps; i++) {
+        cart.x += cart.v * stepSize;
+        const maxX = (canvas.width / scale - cart.width) / 2;
+        cart.x = Math.max(-maxX, Math.min(maxX, cart.x));
+
+        const sinTheta = Math.sin(pole.angle);
+        const cosTheta = Math.cos(pole.angle);
+        const numerator = g * sinTheta - cart.v * cosTheta;
+        const denominator = pole.length * (1 + pole.mass / 3);
+        const alpha = numerator / denominator;
+
+        pole.angularV += alpha * stepSize;
+        pole.angularV *= 0.992;
+        pole.angle += pole.angularV * stepSize;
+
+        pole.angle %= 2 * Math.PI;
+        if (pole.angle < 0) pole.angle += 2 * Math.PI;
+      }
+    }
+
+    function resetSystem() {
+      state = {
+        cart: { x: 0, v: 0, width: 0.5 },
+        pole: { length: 0.6, angle: Math.PI, angularV: 0, mass: 0.005 },
+        lastTime: performance.now() / 1000
+      };
+      moveQueue = [];
+      currentMove = null;
+      startPhase("WAITING");
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.strokeStyle = '#999';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(0, originY + 20);
+      ctx.lineTo(canvas.width, originY + 20);
+      ctx.stroke();
+
+      ctx.fillStyle = '#666';
+      ctx.font = '12px Arial';
+      ctx.textAlign = 'center';
+      for (let x = -5; x <= 5; x++) {
+        const px = canvas.width / 2 + x * scale;
+        ctx.beginPath();
+        ctx.moveTo(px, originY + 20);
+        ctx.lineTo(px, originY + 25);
+        ctx.stroke();
+        ctx.fillText(x.toString(), px, originY + 40);
+      }
+
+      const cartPx = canvas.width / 2 + state.cart.x * scale;
+      const polePx = cartPx + Math.sin(state.pole.angle) * state.pole.length * scale;
+      const polePy = originY - Math.cos(state.pole.angle) * state.pole.length * scale;
+
+      ctx.fillStyle = '#4a6baf';
+      ctx.shadowColor = 'rgba(0,0,0,0.2)';
+      ctx.shadowBlur = 5;
+      ctx.shadowOffsetY = 2;
+      ctx.fillRect(cartPx - state.cart.width / 2 * scale, originY - 15, state.cart.width * scale, 30);
+      ctx.shadowColor = 'transparent';
+
+      const grad = ctx.createLinearGradient(cartPx, originY, polePx, polePy);
+      grad.addColorStop(0, '#d64545');
+      grad.addColorStop(1, '#a82c2c');
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = 5;
+      ctx.beginPath();
+      ctx.moveTo(cartPx, originY);
+      ctx.lineTo(polePx, polePy);
+      ctx.stroke();
+
+      ctx.fillStyle = '#d64545';
+      ctx.beginPath();
+      ctx.arc(polePx, polePy, 12, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = '#a00';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      ctx.fillStyle = '#555';
+      ctx.beginPath();
+      ctx.arc(cartPx, originY, 6, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = '#333';
+      ctx.font = '16px Arial';
+      ctx.textAlign = 'left';
+      const angleDeg = ((state.pole.angle - Math.PI) * 180 / Math.PI).toFixed(1);
+      ctx.fillText(`位置: ${state.cart.x.toFixed(2)}m`, 20, 30);
+      ctx.fillText(`速度: ${state.cart.v.toFixed(2)}m/s`, 20, 60);
+      ctx.fillText(`角度: ${angleDeg}°`, 20, 90);
+    }
+
+    function loop() {
+      const now = performance.now() / 1000;
+      const deltaTime = now - state.lastTime;
+      state.lastTime = now;
+
+      if (phase !== "WAITING") {
+        controlSystem();
+        updatePhysics(deltaTime);
+      }
+
+      draw();
+      requestAnimationFrame(loop);
+    }
+
+    function waitForMoveFinish() {
+      return new Promise(resolve => {
+        const check = () => {
+          if (moveQueue.length === 0 && currentMove === null) resolve();
+          else requestAnimationFrame(check);
+        };
+        check();
+      });
+    }
+
+    document.getElementById('startBtn').addEventListener('click', async () => {
+      resetSystem();
+      startPhase("MOVING");
+
+      scheduleMove(-6, 0.2);
+      await waitForMoveFinish();
+      scheduleMove(0, 1);
+      await waitForMoveFinish();
+
+      // scheduleMove(-1, 0.2);
+      // await waitForMoveFinish();
+
+      // scheduleMove(1, 0.4);
+      // await waitForMoveFinish();
+
+      // scheduleMove(-2, 0.6);
+      // await waitForMoveFinish();
+
+      // scheduleMove(2, 0.6);
+      // await waitForMoveFinish();
+      // scheduleMove(-3, 0.6);
+      // await waitForMoveFinish();
+
+      // scheduleMove(3, 0.8);
+      // await waitForMoveFinish();
+
+      // scheduleMove(-4, 0.8);
+      // await waitForMoveFinish();
+
+      // scheduleMove(4, 0.9);
+      // await waitForMoveFinish();
+
+      // scheduleMove(-5, 0.8);
+      // await waitForMoveFinish();
+
+      // scheduleMove(5, 1.1);
+      // await waitForMoveFinish();
+
+
+      // scheduleMove(0, 0.7);
+      // await waitForMoveFinish();
+    });
+
+    document.getElementById('resetBtn').addEventListener('click', resetSystem);
+
+    loop();
+  </script>
+</body>
+</html>

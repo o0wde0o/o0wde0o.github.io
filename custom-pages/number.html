@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>手写数字识别</title>
+  <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      background: linear-gradient(to bottom right, #e0f7ff, #cce5ff);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+    h1, p {
+      text-align: center;
+      color: #2a4365;
+      padding: 0 15px;
+      margin: 10px 0;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      padding: 15px 10px;
+      flex: 1;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+    .panel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 15px;
+      width: 100%;
+    }
+    canvas {
+      border: 2px solid #333;
+      background: white;
+      cursor: crosshair;
+      width: min(280px, 90vw);
+      height: min(280px, 90vw);
+      touch-action: none;
+    }
+    .right {
+      width: min(200px, 40vw);
+      height: min(200px, 40vw);
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      background: #e0f0ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      margin: 10px auto;
+    }
+    .glow {
+      box-shadow: 0 0 40px #3182ce;
+      transition: box-shadow 0.3s ease-in-out;
+    }
+    #result {
+      color: #000;
+      background: transparent;
+      font-size: min(6em, 15vw);
+      line-height: 1;
+      transition: font-size 0.2s;
+    }
+    .barchart {
+      display: flex;
+      align-items: flex-end;
+      height: min(200px, 30vh);
+      gap: 6px;
+      margin-top: 15px;
+      width: 100%;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      justify-content: center;
+    }
+    .bar-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 20px;
+    }
+    .bar {
+      width: min(22px, 5vw);
+      background-color: #3182ce;
+      transition: height 0.3s ease;
+      border-radius: 4px 4px 0 0;
+    }
+    .bar-label {
+      margin-top: 5px;
+      font-weight: bold;
+      font-size: min(14px, 3vw);
+    }
+    button {
+      margin-top: 15px;
+      font-size: min(1em, 4vw);
+      padding: 8px 16px;
+      background-color: #3182ce;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2c5282;
+    }
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #f8f9fa;
+      border-top: 1px solid #ddd;
+    }
+    footer p {
+      margin: 5px 0;
+      color: #4a5568;
+      font-size: min(14px, 3.5vw);
+    }
+    a {
+      color: #3182ce;
+      text-decoration: none;
+    }
+
+    /* 新增：加载提示动画 */
+    @keyframes pulse {
+      0% { opacity: 0.8; }
+      50% { opacity: 1; }
+      100% { opacity: 0.8; }
+    }
+    #loading-message {
+      animation: pulse 1.5s infinite;
+    }
+
+    @media (max-width: 480px) {
+      .right {
+        width: 35vw;
+        height: 35vw;
+      }
+      #result {
+        font-size: min(5em, 12vw);
+      }
+      .bar {
+        width: min(18px, 4.5vw);
+      }
+      .bar-label {
+        font-size: min(12px, 3vw);
+      }
+    }
+
+    @media (max-width: 360px) {
+      #result {
+        font-size: min(4em, 10vw);
+      }
+      canvas {
+        width: 85vw;
+        height: 85vw;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 新增：加载提示元素 -->
+  <div id="loading-message" style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background: #3182ce;
+    color: white;
+    text-align: center;
+    z-index: 1000;
+    font-size: 14px;
+    font-weight: bold;
+  ">模型首次加载较慢，请耐心等待...</div>
+
+  <h1>手写数字识别演示</h1>
+  <p>请在下方画布中手写数字，识别结果将依次展示</p>
+
+  <div class="container">
+    <div class="panel">
+      <canvas id="canvas" width="280" height="280"></canvas>
+      <button onclick="clearCanvas()">清空</button>
+    </div>
+    
+    <div class="panel">
+      <div class="right" id="resultWrapper">
+        <div id="result">?</div>
+      </div>
+    </div>
+    
+    <div class="panel">
+      <div class="barchart" id="barchart"></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>灵感来源 <a href="https://www.i-am.ai/neural-numbers.html" target="_blank">Neural Numbers</a></p>
+  </footer>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const barchart = document.getElementById('barchart');
+    let drawing = false;
+    let session = null;
+    let lastX, lastY;
+
+    function getCanvasPosition(e) {
+      const rect = canvas.getBoundingClientRect();
+      const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+      const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+      return {
+        x: (clientX - rect.left) * (canvas.width / rect.width),
+        y: (clientY - rect.top) * (canvas.height / rect.height)
+      };
+    }
+
+    function initCanvas() {
+      ctx.fillStyle = "white";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.lineWidth = 12;
+      ctx.lineCap = "round";
+      ctx.strokeStyle = "black";
+    }
+
+    function initBarchart() {
+      barchart.innerHTML = '';
+      for (let i = 0; i < 10; i++) {
+        const barContainer = document.createElement('div');
+        barContainer.className = 'bar-container';
+        
+        const bar = document.createElement('div');
+        bar.className = 'bar';
+        bar.id = `bar-${i}`;
+        bar.style.height = '0px';
+        
+        const label = document.createElement('div');
+        label.className = 'bar-label';
+        label.textContent = i;
+        
+        barContainer.appendChild(bar);
+        barContainer.appendChild(label);
+        barchart.appendChild(barContainer);
+      }
+    }
+
+    function clearCanvas() {
+      initCanvas();
+      document.getElementById('result').innerText = '?';
+      document.getElementById('resultWrapper').classList.remove('glow');
+      resetBarchart();
+    }
+
+    function resetBarchart() {
+      for (let i = 0; i < 10; i++) {
+        document.getElementById(`bar-${i}`).style.height = '0px';
+        document.getElementById(`bar-${i}`).style.backgroundColor = '#3182ce';
+      }
+    }
+
+    function startDrawing(e) {
+      e.preventDefault();
+      drawing = true;
+      const pos = getCanvasPosition(e);
+      lastX = pos.x;
+      lastY = pos.y;
+    }
+
+    function draw(e) {
+      e.preventDefault();
+      if (!drawing) return;
+      const pos = getCanvasPosition(e);
+      ctx.beginPath();
+      ctx.moveTo(lastX, lastY);
+      ctx.lineTo(pos.x, pos.y);
+      ctx.stroke();
+      lastX = pos.x;
+      lastY = pos.y;
+      throttlePredict();
+    }
+
+    function stopDrawing() {
+      drawing = false;
+    }
+
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('mouseout', stopDrawing);
+    canvas.addEventListener('touchstart', startDrawing);
+    canvas.addEventListener('touchmove', draw);
+    canvas.addEventListener('touchend', stopDrawing);
+
+    async function preprocessAndPredict() {
+      // 新增：首次预测时移除提示
+      if (document.getElementById('loading-message')) {
+        document.getElementById('loading-message').remove();
+      }
+      
+      const sCanvas = document.createElement("canvas");
+      sCanvas.width = 28;
+      sCanvas.height = 28;
+      const sctx = sCanvas.getContext("2d");
+      sctx.drawImage(canvas, 0, 0, 28, 28);
+      let imageData = sctx.getImageData(0, 0, 28, 28);
+      let data = imageData.data;
+      let input = [];
+      for (let i = 0; i < 28 * 28; i++) {
+        input.push((255 - data[i * 4]) / 255);
+      }
+
+      let centerX = 0, centerY = 0, sum = 0;
+      for (let y = 0; y < 28; y++) {
+        for (let x = 0; x < 28; x++) {
+          const val = input[y * 28 + x];
+          centerX += x * val;
+          centerY += y * val;
+          sum += val;
+        }
+      }
+      if (sum > 0.01) {
+        centerX /= sum;
+        centerY /= sum;
+        const dx = Math.round(14 - centerX);
+        const dy = Math.round(14 - centerY);
+
+        const shifted = new Float32Array(784).fill(0);
+        for (let y = 0; y < 28; y++) {
+          for (let x = 0; x < 28; x++) {
+            const ny = y + dy;
+            const nx = x + dx;
+            if (nx >= 0 && nx < 28 && ny >= 0 && ny < 28) {
+              shifted[ny * 28 + nx] = input[y * 28 + x];
+            }
+          }
+        }
+        input = shifted;
+      }
+
+      const tensor = new ort.Tensor("float32", input, [1, 1, 28, 28]);
+      const output = await session.run({ [session.inputNames[0]]: tensor });
+      const result = output[session.outputNames[0]].data;
+      const maxVal = Math.max(...result);
+      const prediction = result.indexOf(maxVal);
+
+      for (let i = 0; i < 10; i++) {
+        const bar = document.getElementById(`bar-${i}`);
+        const height = (result[i] / maxVal) * 200;
+        bar.style.height = `${height}px`;
+        bar.style.backgroundColor = i === prediction ? '#e53e3e' : '#3182ce';
+      }
+
+      const resultDiv = document.getElementById('result');
+      const wrapper = document.getElementById('resultWrapper');
+      if (maxVal > 0.5) {
+        resultDiv.innerText = prediction;
+        wrapper.classList.add('glow');
+      } else {
+        resultDiv.innerText = "❓";
+        wrapper.classList.remove('glow');
+      }
+    }
+
+    let throttleTimer = null;
+    function throttlePredict() {
+      if (throttleTimer) return;
+      throttleTimer = setTimeout(() => {
+        preprocessAndPredict();
+        throttleTimer = null;
+      }, 250);
+    }
+
+    initCanvas();
+    initBarchart();
+
+    ort.InferenceSession.create("assets/mnist-12.onnx").then(s => {
+      session = s;
+    }).catch(err => {
+      console.error("模型加载失败:", err);
+      document.getElementById('result').innerText = "模型加载失败";
+      // 新增：加载失败时也移除提示
+      if (document.getElementById('loading-message')) {
+        document.getElementById('loading-message').remove();
+      }
+    });
+  </script>
+</body>
+</html>

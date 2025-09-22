@@ -1,0 +1,92 @@
+/* 浅色模式默认样式 */
+[data-theme="light"] {
+    /* 文章页背景 - 浅蓝色透明 */
+    --post-bg-color: rgba(173, 216, 230, 0.9); /* 浅蓝色 */
+    
+    /* 卡片背景 - 浅蓝色透明 */
+    --card-bg-color: rgba(173, 216, 230, 0.9);
+    
+    /* 页脚完全透明 */
+    --footer-bg-color: rgba(255, 255, 255, 0);
+  }
+  
+  /* 深色模式样式 */
+  [data-theme="dark"] {
+    /* 文章页背景 - 深蓝色透明 */
+    --post-bg-color: rgba(40, 40, 120, 0.7); /* 深蓝色 */
+    
+    /* 卡片背景 - 深蓝色透明 */
+    --card-bg-color: rgba(40, 40, 120, 0.7);
+    
+    /* 页脚完全透明 */
+    --footer-bg-color: rgba(0, 0, 0, 0);
+  }
+  
+  /* 应用样式到文章页 */
+  .layout_post>#post {
+    background: var(--post-bg-color);
+  }
+  
+  /* 应用样式到所有卡片 */
+  #aside_content .card-widget, 
+  #recent-posts>.recent-post-item, 
+  .layout_page>div:first-child:not(.recent-posts), 
+  .layout_post>#page, 
+  .layout_post>#post, 
+  .read-mode .layout_post>#post {
+    background: var(--card-bg-color);
+  }
+  
+  /* 侧边卡片透明度 */
+  :root {
+    --card-bg: var(--card-bg-color);
+  }
+  
+  /* 页脚透明 */
+  #footer {
+    background: var(--footer-bg-color);
+  }
+
+
+.card-tag-cloud a[style*="1.5em"] { color: #6677ff !important; }
+.ard-tag-cloud a[style*="1.3em"] { color: #99ccff !important; }
+.card-tag-cloud a[style*="1.1em"] { color: #cccccc !important; }
+
+
+
+/*自制时间线*/
+.auto-timeline {
+  position: relative;
+  padding-left: 2em;
+  border-left: 3px solid #ccc;
+  margin: 2em 0;
+}
+
+.auto-timeline .timeline-item {
+  position: relative;
+  margin-bottom: 1.5em;
+}
+
+.auto-timeline .timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -11px;
+  top: 0.2em;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--dot-color, #42b983);
+  box-shadow: 0 0 0 2px white, 0 0 0 4px rgba(66,185,131,0.3);
+}
+
+.auto-timeline .timeline-title {
+  font-weight: bold;
+  font-size: 16px;
+  margin: 0 0 0.3em;
+}
+
+.auto-timeline .timeline-content {
+  margin-left: 0.2em;
+  color: #555;
+  font-size: 15px;
+}

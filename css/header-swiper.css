@@ -1,0 +1,21 @@
+/* Swiper 容器样式 */
+#page-header .swiper-container {
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+  
+  #page-header .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.5);
+  }
+  
+  /* 避免干扰 */
+  body[data-page-path="2025/06/26/sky/"] #page-header {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+  }
+  
