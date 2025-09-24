@@ -45,6 +45,18 @@ document.addEventListener('DOMContentLoaded', function () {
         url: 'https://cdn.jsdelivr.net/gh/o0wde0o/blog-image@main/music/%E6%B4%9B%E5%A4%A9%E4%BE%9D-%E5%A4%A7%E4%B8%BB%E5%AE%B0.mp3',
         cover: 'https://cdn.jsdelivr.net/gh/o0wde0o/blog-image@main/music/%E5%A4%A7%E4%B8%BB%E5%AE%B0.jpg'
       },
+      {
+        name: '死别',
+        artist: 'GUMI, シャノン',       
+        url: 'https://cdn.jsdelivr.net/gh/o0wde0o/blog-image@main/music/%E6%AD%BB%E5%88%AB(%E6%89%8B%E9%A3%8E%E7%90%B4%E7%BA%AF%E9%9F%B3%E4%B9%90%E7%89%88).mp3',
+        cover: 'https://cdn.jsdelivr.net/gh/o0wde0o/blog-image@main/music/%E6%AD%BB%E5%88%AB.jpg'
+      },
+      {
+        name: '【航天史填词】东方红的心脏',
+        artist: '【乐正绫x洛天依】',
+        url: 'https://cdn.jsdelivr.net/gh/o0wde0o/blog-image@main/music/%E3%80%90%E8%88%AA%E5%A4%A9%E5%8F%B2%E5%A1%AB%E8%AF%8D%E3%80%91%E4%B8%9C%E6%96%B9%E7%BA%A2%E7%9A%84%E5%BF%83%E8%84%8F%E3%80%90%E4%B9%90%E6%AD%A3%E7%BB%ABx%E6%B4%9B%E5%A4%A9%E4%BE%9D%E3%80%91_%E9%9F%B3%E9%A2%91.mp3',
+        cover: 'https://cdn.jsdelivr.net/gh/o0wde0o/blog-image@main/music/%E3%80%90%E8%88%AA%E5%A4%A9%E5%8F%B2%E5%A1%AB%E8%AF%8D%E3%80%91%E4%B8%9C%E6%96%B9%E7%BA%A2%E7%9A%84%E5%BF%83%E8%84%8F.jpg'
+      },
     ]
   });
 

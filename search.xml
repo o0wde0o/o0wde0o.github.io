@@ -59,29 +59,6 @@
       </tags>
   </entry>
   <entry>
-    <title>字符识别演示Demo</title>
-    <url>/2025/07/15/%E5%AD%97%E7%AC%A6%E8%AF%86%E5%88%AB%E6%BC%94%E7%A4%BADemo/</url>
-    <content><![CDATA[<div style="display: flex; justify-content: center;">
-  <iframe 
-    src="/custom-pages/character.html" 
-    width="90%" 
-    style="max-width: 960px; height: 1200px; opacity: 0.7;"
-  ></iframe>
-
-</div>
-
-<p>你说准确率不够？去<a href="https://o0wde0o.github.io/2025/06/24/%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/">手写数字识别</a>看看！</p>
-]]></content>
-      <categories>
-        <category>HTML交互页面</category>
-      </categories>
-      <tags>
-        <tag>ONNX</tag>
-        <tag>神经网络</tag>
-        <tag>机器学习</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Markdown 基础语法讲解（含 Typora 快捷键）</title>
     <url>/2025/07/13/Markdown%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>本文为 Markdown 基础语法笔记。</p>
@@ -669,6 +646,29 @@
       </tags>
   </entry>
   <entry>
+    <title>字符识别演示Demo</title>
+    <url>/2025/07/15/%E5%AD%97%E7%AC%A6%E8%AF%86%E5%88%AB%E6%BC%94%E7%A4%BADemo/</url>
+    <content><![CDATA[<div style="display: flex; justify-content: center;">
+  <iframe 
+    src="/custom-pages/character.html" 
+    width="90%" 
+    style="max-width: 960px; height: 1200px; opacity: 0.7;"
+  ></iframe>
+
+</div>
+
+<p>你说准确率不够？去<a href="https://o0wde0o.github.io/2025/06/24/%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/">手写数字识别</a>看看！</p>
+]]></content>
+      <categories>
+        <category>HTML交互页面</category>
+      </categories>
+      <tags>
+        <tag>ONNX</tag>
+        <tag>神经网络</tag>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python学生成绩GUI分析系统</title>
     <url>/2025/06/26/%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<center><span style="font-size:30px;"><a><b>学生成绩数据分析</b></a></span></center>
@@ -728,6 +728,179 @@
       </tags>
   </entry>
   <entry>
+    <title>平衡摆</title>
+    <url>/2025/06/24/%E5%B0%8F%E8%BD%A6%E5%B9%B3%E8%A1%A1%E6%91%86/</url>
+    <content><![CDATA[<div style="display: flex; justify-content: center;">
+  <iframe src="/custom-pages/pid.html" 
+  width="90%" 
+  style="max-width: 960px; height :600px ;opacity: 0.7">"</iframe>
+</div>
+
+<h4 id="施工中…"><a href="#施工中…" class="headerlink" title="施工中…"></a>施工中…</h4><p>但是平衡摆并没有做好，<del>因为我还没学会怎么调pid</del>。<br>由于pid调节器基于js，似乎各个浏览器运行结果也不一致，目前没什么好的思路。<br>→ <a href="https://www.youtube.com/watch?v=9gQQAO4I1Ck%3Elinks.html" title="How to train simple AIs to balance a double pendulum">视频</a>v</p>
+]]></content>
+      <categories>
+        <category>HTML交互页面</category>
+      </categories>
+      <tags>
+        <tag>物理</tag>
+        <tag>pid</tag>
+        <tag>控制系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>建站小记</title>
+    <url>/2025/07/02/%E5%BB%BA%E7%AB%99%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<h3 id="2025-6-24"><a href="#2025-6-24" class="headerlink" title="2025.6.24"></a>2025.6.24</h3><p><del>注册域名，购买服务器，购买域名备案，购买云服务器，购买域名解析，购买SSL证书，配置Nginx，配置SSL，配置MySQL，配置PHP，配置Git，配置GitHub，配置Hexo，配置主题，配置评论插件，配置搜索插件，配置统计插件，配置域名，配置网站，配置网站统计，配置网站地图，配置网站SEO，配置网站收录，配置网站安全，配置网站备案，配置网站优化，配置网站推广，配置网站内容，配置网站广告，配置网站推广，配置网站流量，配置网站流量优化，配置网站流量监控，配置网站流量分析，配置网站流量导入，配置网站流量导出.</del>  </p>
+<p>⬆⬆以上全是Fitten Code自动生成，这玩意总是打断写作思路，像是这样：<br><img src="https://cdn.jsdelivr.net/gh/o0wde0o/blog-image@main/data/image.png" alt="alt text"><br>或者这样：<br><img src="https://cdn.jsdelivr.net/gh/o0wde0o/blog-image@main/data/image-1.png" alt="alt text"><br>什么自卖自夸（莫名其妙，留下来好了。)</p>
+<p><strong>言归正传</strong>  </p>
+<h3 id="6-24-尝试搭建个人博客的第一天。"><a href="#6-24-尝试搭建个人博客的第一天。" class="headerlink" title="6.24 尝试搭建个人博客的第一天。"></a>6.24<span style="font-weight: normal; font-size: 1rem;"> 尝试搭建个人博客的第一天。</span></h3><p>其实也不是第一天，之前写过一些简单的HTML网页，比如用户登录页面、拉取表单、CSS，JS美化样式之类。现在我在这些网页里，选出一些有趣的放在<a href="12342">HTML交互页面</a>分类下面。</p>
+<ul>
+<li>尝试用Github.io + GitHub Desktop建站<del>我懒，不喜欢敲命令</del>，这样也不需要买服务器，当时页面上除了index.html就是各种零零散散的小玩意。</li>
+<li>自己写还是不太现实，本人编程水平，代码能运行不报错就谢天谢地了（搞前端不到十个小时）；即使用AI帮我搞出一个功能齐全的博客也很容易半途而费，计划暂时搁置。</li>
+</ul>
+<h3 id="6-26"><a href="#6-26" class="headerlink" title="6.26"></a>6.26</h3><p>之前了解过云服务器，宝塔面板还有其它构建教程， PHP+SQL 架构还是太超前了，我只是搞点静态博客试试，实在有需求再说，总结起来大概要满足以下要求：</p>
+<ol>
+<li><p>外观方面：</p>
+<ul>
+<li>蓝色主题，如果不是，那么至少可以修改为蓝色系风格。</li>
+<li>简洁美观，不要眼花缭乱的主页，不要二次元。</li>
+</ul>
+</li>
+<li><p>功能方面：</p>
+<ul>
+<li><p>Github.io 托管，没有服务器。</p>
+</li>
+<li><p>文章满足多级分类，不是平铺型的，比如</p>
+<p>​    -教程：</p>
+<p>​        -python教程；</p>
+<p>​        -C++教程；</p>
+<p>​    -学习：</p>
+<p>​        -线性代数；</p>
+<p>​        -OpenCV；</p>
+</li>
+<li><p>如果可以的话，添加说说&#x2F;评论区功能，希望朋友们可以和我交流&#x2F;指正我的错误。</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>那么去看看别人的博客好了，最后选了某Argon主题，基本满足我的需求，但是具体怎么做？去问GPT，牠给出如下建议：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/o0wde0o/blog-image@main/data/image-20250715035925779.png" alt="image-20250715035925779"></p>
+<p>记住这句<strong>Argon UI 魔改版</strong>，</p>
+<p>以后人们迟早都被AI给害死（暴论）。</p>
+<p>那就开始呗，</p>
+<ul>
+<li><p>npm（说了我没搞过前端，不过包管理还挺方便），node.js，Hexo 都配置好。</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">hexo init .</span><br><span class="line">npm install</span><br><span class="line">hexo server</span><br><span class="line"># 访问 http://localhost:<span class="number">4000</span></span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line"># 安装部署插件</span><br></pre></td></tr></table></figure>
+
+<p>看到(<a href="https://o0wde0o.github.io/2025/06/24/hello-world/">Hello World</a>)，胜利的曙光似乎就在眼前；</p>
+</li>
+<li><p>此时GPT开始发力：</p>
+</li>
+</ul>
+<img src="https://cdn.jsdelivr.net/gh/o0wde0o/blog-image@main/data/image-20250715041958743.png" alt="image-20250715041958743" style="zoom: 70%;" />
+
+
+
+<p>哦不支持啊，那我们在干什么呢，陪你玩吗？感觉被AI耍了😠</p>
+<p>小伙还给出了一堆修改底层文件代码的方案。。。（我根本找不见牠给的文件夹和什么.scss，紧急叫停）</p>
+<ul>
+<li><p>由于不想重做，只好基于Hexo找找合适的主题，看着Butterfly不错，后续寻找教程的时候，确实有不少这个主题的博客（不排除浏览器记住我搜索词的原因）</p>
+</li>
+<li><p>勉强步入正轨吧，试试 .yml 文件配置功能，有点眼花缭乱，也许我将来会写一篇文章，给出更详细的中文注释，这样可以快速上手，链接在这里，没有就是没写好  -&gt;<a href="">Hexo + Butterfly 博客初始配置</a>。</p>
+</li>
+</ul>
+<h3 id="6-27"><a href="#6-27" class="headerlink" title="6.27"></a>6.27</h3><p>这几天大概做：</p>
+<ol>
+<li>主题美化</li>
+<li>评论&#x2F;说说（一直很好奇怎么实现P2P交互，后来发现其实是中心化服务和后端 API 支撑的）</li>
+<li>音乐播放</li>
+<li>桌宠（这个能做出来是当时没想到的，开源万岁！）</li>
+</ol>
+<p>事情太多不知道从哪记起，</p>
+<ul>
+<li>上传之前的文章试试水，大概六月的都是这样，就是作业报告&#x2F;HTML页面</li>
+<li>修改所有背景图片，设置切换夜间模式时自动切换夜间图片（仅在主页生效）</li>
+<li>尝试<a href="https://twikoo.js.org/quick-start.html">快速上手 | Twikoo </a>部署，没做成，可能是哪一步错了，Vercel一直部署不了，回家</li>
+</ul>
+<h3 id="6-28"><a href="#6-28" class="headerlink" title="6.28"></a>6.28</h3><p>继续之前的工作，</p>
+<ul>
+<li><p>用<a href="https://waline.js.org/guide/get-started/">快速上手 | Waline</a>一次成功</p>
+</li>
+<li><p>rain 特效，打字机效果</p>
+</li>
+<li><p>修复文字与背景颜色接近的问题</p>
+</li>
+<li><p>每次测试好麻烦，写个bat脚本一键部署</p>
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line">:: Hexo 控制台</span><br><span class="line">:: 功能：R=本地运行 | D=部署 | N=新建文章 | Q=退出</span><br><span class="line">:: 优化：自动终止占用<span class="number">4000</span>端口的进程，支持中文文章名</span><br><span class="line">:: 配色：深蓝背景，青色文字（<span class="built_in">color</span> <span class="number">03</span>）</span><br><span class="line"></span><br><span class="line"><span class="built_in">chcp</span> <span class="number">65001</span> &gt;<span class="built_in">nul</span></span><br><span class="line"><span class="built_in">title</span> Hexo 控制台 (R=运行 D=部署 N=新建 Q=退出)</span><br><span class="line"><span class="built_in">color</span> <span class="number">03</span></span><br><span class="line"><span class="built_in">cls</span></span><br><span class="line"></span><br><span class="line">:menu</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span>  [Hexo 控制台 v2.<span class="number">0</span>]</span><br><span class="line"><span class="built_in">echo</span>  --------------------------</span><br><span class="line"><span class="built_in">echo</span>  R = 清理并启动本地服务（自动终止旧进程+开浏览器）</span><br><span class="line"><span class="built_in">echo</span>  --------------------------</span><br><span class="line"><span class="built_in">echo</span>  D = 清理并部署到 GitHub</span><br><span class="line"><span class="built_in">echo</span>  --------------------------</span><br><span class="line"><span class="built_in">echo</span>  N = 新建文章（支持中文标题）</span><br><span class="line"><span class="built_in">echo</span>  --------------------------</span><br><span class="line"><span class="built_in">echo</span>  Q = 退出控制台</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"></span><br><span class="line">:choice</span><br><span class="line">choice /C RDNQ /N /M &quot;请选择: &quot; </span><br><span class="line"><span class="keyword">if</span> <span class="keyword">errorlevel</span> <span class="number">4</span> <span class="keyword">goto</span> <span class="keyword">exit</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">errorlevel</span> <span class="number">3</span> <span class="keyword">goto</span> newpost</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">errorlevel</span> <span class="number">2</span> <span class="keyword">goto</span> deploy</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">errorlevel</span> <span class="number">1</span> <span class="keyword">goto</span> serve</span><br><span class="line"></span><br><span class="line">:serve</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span> [正在终止可能存在的旧服务进程...]</span><br><span class="line"><span class="built_in">taskkill</span> /f /im node.exe &gt;<span class="built_in">nul</span> <span class="number">2</span>&gt;&amp;<span class="number">1</span></span><br><span class="line">timeout /t <span class="number">1</span> &gt;<span class="built_in">nul</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> [正在生成静态文件...]</span><br><span class="line"><span class="keyword">call</span> hexo clean &amp;&amp; <span class="keyword">call</span> hexo g</span><br><span class="line"><span class="keyword">if</span> <span class="variable">%errorlevel%</span> <span class="keyword">neq</span> <span class="number">0</span> (</span><br><span class="line">    <span class="built_in">echo</span> [!] 生成失败！错误代码：<span class="variable">%errorlevel%</span></span><br><span class="line">    <span class="built_in">pause</span> &gt;<span class="built_in">nul</span></span><br><span class="line">    <span class="keyword">goto</span> menu</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> [正在启动本地服务...]</span><br><span class="line"><span class="built_in">start</span> &quot;&quot; /B <span class="built_in">cmd</span> /c &quot;hexo s --draft &amp;&amp; <span class="keyword">exit</span>&quot;  :: 显示草稿</span><br><span class="line"></span><br><span class="line">:: 服务健康检查</span><br><span class="line"><span class="built_in">echo</span> [等待服务启动...]</span><br><span class="line">timeout /t <span class="number">5</span> &gt;<span class="built_in">nul</span></span><br><span class="line">netstat -ano | <span class="built_in">findstr</span> &quot;:<span class="number">4000</span>&quot; &gt;<span class="built_in">nul</span></span><br><span class="line"><span class="keyword">if</span> <span class="variable">%errorlevel%</span> <span class="keyword">neq</span> <span class="number">0</span> (</span><br><span class="line">    <span class="built_in">echo</span> [!] 服务启动失败！请检查：</span><br><span class="line">    <span class="built_in">echo</span>    <span class="number">1</span>. 是否安装hexo-cli</span><br><span class="line">    <span class="built_in">echo</span>    <span class="number">2</span>. 是否在Hexo项目目录</span><br><span class="line">    <span class="built_in">pause</span> &gt;<span class="built_in">nul</span></span><br><span class="line">    <span class="keyword">goto</span> menu</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="built_in">start</span> http://localhost:<span class="number">4000</span>/</span><br><span class="line"><span class="built_in">echo</span> [√] 服务已启动 | 浏览器已打开</span><br><span class="line"><span class="built_in">echo</span> 按任意键返回菜单...</span><br><span class="line"><span class="built_in">pause</span> &gt;<span class="built_in">nul</span></span><br><span class="line"><span class="keyword">goto</span> menu</span><br><span class="line"></span><br><span class="line">:deploy</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span> [正在清理并生成静态文件...]</span><br><span class="line"><span class="keyword">call</span> hexo clean &amp;&amp; <span class="keyword">call</span> hexo g</span><br><span class="line"><span class="keyword">if</span> <span class="variable">%errorlevel%</span> <span class="keyword">neq</span> <span class="number">0</span> (</span><br><span class="line">    <span class="built_in">echo</span> [!] 生成失败！错误代码：<span class="variable">%errorlevel%</span></span><br><span class="line">    <span class="built_in">pause</span> &gt;<span class="built_in">nul</span></span><br><span class="line">    <span class="keyword">goto</span> menu</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> [正在部署到GitHub...]</span><br><span class="line"><span class="keyword">call</span> hexo d</span><br><span class="line"><span class="keyword">if</span> <span class="variable">%errorlevel%</span> <span class="keyword">neq</span> <span class="number">0</span> (</span><br><span class="line">    <span class="built_in">echo</span> [!] 部署失败！请检查：</span><br><span class="line">    <span class="built_in">echo</span>    <span class="number">1</span>. Git配置是否正确</span><br><span class="line">    <span class="built_in">echo</span>    <span class="number">2</span>. 网络连接是否正常</span><br><span class="line">) <span class="keyword">else</span> (</span><br><span class="line">    <span class="built_in">echo</span> [√] 部署成功！^&gt; 可访问：https://你的用户名.github.io</span><br><span class="line">)</span><br><span class="line"><span class="built_in">pause</span> &gt;<span class="built_in">nul</span></span><br><span class="line"><span class="keyword">goto</span> menu</span><br><span class="line"></span><br><span class="line">:newpost</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">set</span> /p postname=请输入文章标题（支持中文）:</span><br><span class="line"><span class="built_in">echo</span> [正在创建文章...]</span><br><span class="line"><span class="keyword">call</span> hexo new post &quot;<span class="variable">%postname%</span>&quot;</span><br><span class="line"><span class="keyword">if</span> <span class="variable">%errorlevel%</span> <span class="keyword">neq</span> <span class="number">0</span> (</span><br><span class="line">    <span class="built_in">echo</span> [!] 创建失败！请检查：</span><br><span class="line">    <span class="built_in">echo</span>    <span class="number">1</span>. 是否在Hexo项目目录</span><br><span class="line">    <span class="built_in">echo</span>    <span class="number">2</span>. 标题是否含特殊字符</span><br><span class="line">) <span class="keyword">else</span> (</span><br><span class="line">    <span class="built_in">echo</span> [√] 文章已创建：source/_posts/<span class="variable">%postname%</span>.<span class="built_in">md</span></span><br><span class="line">    :: 自动用VSCode打开（需安装VSCode）</span><br><span class="line">    code &quot;source/_posts/<span class="variable">%postname%</span>.<span class="built_in">md</span>&quot; <span class="number">2</span>&gt;<span class="built_in">nul</span> || (</span><br><span class="line">        <span class="built_in">echo</span> [提示] 未检测到VSCode，请手动编辑文件</span><br><span class="line">    )</span><br><span class="line">)</span><br><span class="line"><span class="built_in">pause</span> &gt;<span class="built_in">nul</span></span><br><span class="line"><span class="keyword">goto</span> menu</span><br><span class="line"></span><br><span class="line">:<span class="keyword">exit</span></span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span> [正在清理进程...]</span><br><span class="line"><span class="built_in">taskkill</span> /f /im node.exe &gt;<span class="built_in">nul</span> <span class="number">2</span>&gt;&amp;<span class="number">1</span></span><br><span class="line"><span class="built_in">echo</span> 正在退出...</span><br><span class="line">timeout /t <span class="number">1</span> &gt;<span class="built_in">nul</span></span><br><span class="line"><span class="keyword">exit</span></span><br></pre></td></tr></table></figure>
+
+<p>也可以搞简单点，都行：）</p>
+</li>
+<li><p>查看了大部分配置文件，发现 aplayer 和 Live2d 有封装好的文件，看来有可行性</p>
+</li>
+</ul>
+<h3 id="6-29"><a href="#6-29" class="headerlink" title="6.29"></a>6.29</h3><p>这是<a href="https://aplayer.js.org/#/zh-Hans/">首页 - APlayer</a>文档，</p>
+<ul>
+<li>修改鼠标指针样式，奥日（Ori）风，由于不熟悉容器标签这些，花了点时间</li>
+<li>Aplayer可以直接引，但是我不满意，改成了悬浮球样式（这个应该是首创）</li>
+<li>为了切换页面不中断播放，使用pjax，找了几首歌试试，效果不错</li>
+<li>页面搜索，不蒜子都打开</li>
+</ul>
+<h3 id="6-30"><a href="#6-30" class="headerlink" title="6.30"></a>6.30</h3><p>图书馆周一闭馆，那我也休息，哈哈！</p>
+<h3 id="7-1"><a href="#7-1" class="headerlink" title="7.1"></a>7.1</h3><p>最艰难的Live 2D，整整搞了一天</p>
+<ul>
+<li><p>首先找找GitHub开源，因为实现的网站很多，应该是有个可用模板</p>
+</li>
+<li><p>他们管这个叫看板娘：<a href="https://github.com/stevenjoezhang/live2d-widget">https://github.com/stevenjoezhang/live2d-widget</a></p>
+</li>
+<li><p>过于集成化，没法导入我的模型：感谢UP<a href="https://www.bilibili.com/video/BV1EX4y1T7pG/">【光遇】黄鼠狼平菇-live2d极简模型展示_哔哩哔哩_bilibili</a></p>
+</li>
+<li><p>找到<a href="https://github.com/guansss/pixi-live2d-display">guansss&#x2F;pixi-live2d-display: A PixiJS plugin to display Live2D models of any kind.</a>支持导入自己模型问题是他们需要解包后的动作json文件，成品都是LPK，没法用</p>
+</li>
+<li><p>在网上看了几篇文章，有点思路了：</p>
+<ol>
+<li>有人用Unity做逆向的，不会</li>
+<li>已知lpk是某种压缩文件，尝试一些在线解压，会得到一堆bin3后缀的加密文件</li>
+<li><a href="https://github.com/spawner1145/lpk-unpacker">lpk-unpacker: lpk逆向工具，支持live 2d viewerex的lpk逆向，输出为标准live2d目录形式</a>借助前人经验，用py成功得到源文件</li>
+</ol>
+</li>
+<li><p>下载<a href="https://www.live2d.com/en/">Live2D Cubism | See your creation come to life. Software that directly animates your original drawings.</a>检查我的模型是否可用：动作比较少，没有音频和视觉跟随等，不过能用</p>
+</li>
+<li><p>至此事情已经过于复杂，先在空网页做好，调试完毕，再加进我的博客，同样需要pjax技术防止我的宝贝刷新掉</p>
+</li>
+</ul>
+<p>感觉这个光崽桌宠也是我首创，有桌宠的博客大抵千篇一律，<del>可也能是千篇十律，因为他们提供了大概十几个可换人物吧</del>，制作过程中看到开源模型库是有的，没见到有人换。</p>
+<h3 id="7-2"><a href="#7-2" class="headerlink" title="7.2"></a>7.2</h3><p>终于想起来写总结了哈哈，以下是 todo list：</p>
+<ul>
+<li>解决主页之外的图片切换</li>
+<li>记录写完了，应当做个说明文档供诸君采纳</li>
+<li>把我的光遇记录贴补上<del>主要是时间太久懒得翻照片</del></li>
+<li>由于butterfly没有时间轴（其实是有一个，但是效果不怎么样），考虑换这个<a href="https://plume.pengzhanbo.cn/">Vuepress Theme Plume | Plume 主题</a></li>
+</ul>
+<p>其实也该学下vue或者react的）这几天纯硬闯</p>
+<ul>
+<li>之前的项目上传一下，更丰富的页面功能</li>
+</ul>
+<h3 id="7-12"><a href="#7-12" class="headerlink" title="7.12"></a>7.12</h3><p>当事情趋于解决，我就会懈怠，总是如此呢</p>
+<ul>
+<li>更新了sky光·遇分类的横滚首页栏</li>
+<li>localsend 传图，好多，不想整理）</li>
+</ul>
+<h3 id="7-15"><a href="#7-15" class="headerlink" title="7.15"></a>7.15</h3><ul>
+<li>想写个五子棋人机对弈，α-β剪枝算法不错，正在学习</li>
+</ul>
+<h3 id="7-18"><a href="#7-18" class="headerlink" title="7.18"></a>7.18</h3><ul>
+<li>又休息上了，不怎么会整合局面判断，局面判断好麻烦，而且JS计算速度堪忧🤔</li>
+<li>增加更多加载&#x2F;404动画 ；加载时PC端与移动设备分别显示</li>
+</ul>
+]]></content>
+      <categories>
+        <category>初成之业</category>
+      </categories>
+      <tags>
+        <tag>记录</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>手写数字识别</title>
     <url>/2025/06/24/%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/</url>
     <content><![CDATA[<div style="display: flex; justify-content: center;">
@@ -749,28 +922,118 @@
       </tags>
   </entry>
   <entry>
-    <title>平衡摆</title>
-    <url>/2025/06/24/%E5%B0%8F%E8%BD%A6%E5%B9%B3%E8%A1%A1%E6%91%86/</url>
-    <content><![CDATA[<div style="display: flex; justify-content: center;">
-  <iframe src="/custom-pages/pid.html" 
-  width="90%" 
-  style="max-width: 960px; height :600px ;opacity: 0.7">"</iframe>
-</div>
+    <title></title>
+    <url>/2025/09/21/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8octoprint/</url>
+    <content><![CDATA[<hr>
+<p>title: 树莓派使用 OctoPrint<br>date: 2025-09-20<br>categories: </p>
+<ul>
+<li>记录<br>tags: </li>
+<li>OctoPrint</li>
+<li>3D打印</li>
+<li>树莓派</li>
+</ul>
+<hr>
+<h1 id="树莓派-OctoPi-OctoPrint-记录"><a href="#树莓派-OctoPi-OctoPrint-记录" class="headerlink" title="树莓派 OctoPi + OctoPrint 记录"></a>树莓派 OctoPi + OctoPrint 记录</h1><p>最近买了一台3D打印机，但是实验室离宿舍有一段距离，而且时开时不开，于是准备做一个上位机远程控制，同时观察打印效果：</p>
+<h2 id="1-主流控件与软件"><a href="#1-主流控件与软件" class="headerlink" title="1. 主流控件与软件"></a>1. 主流控件与软件</h2><ul>
+<li><strong>OctoPrint</strong><ul>
+<li>3D 打印机管理平台，网页控制打印机。</li>
+<li>官网: <a href="https://octoprint.org/">https://octoprint.org/</a></li>
+</ul>
+</li>
+<li><strong>Klipper</strong><ul>
+<li>高性能 3D 打印固件，支持多种主板。</li>
+<li>官网: <a href="https://www.klipper3d.org/">https://www.klipper3d.org/</a></li>
+</ul>
+</li>
+<li><strong>Moonraker &amp; MainsailOS</strong><ul>
+<li>Klipper API 与网页前端管理界面。</li>
+<li>Moonraker: <a href="https://moonraker.readthedocs.io/">https://moonraker.readthedocs.io/</a></li>
+<li>MainsailOS: <a href="https://docs.mainsail.xyz/">https://docs.mainsail.xyz/</a></li>
+</ul>
+</li>
+</ul>
+<p>查完之后发现响尾蛇X1是马林固件，上位机octopi和klipper都能使用，安卓手机或树莓派，旧电脑是主流刷写设备。OctoPrint最简单，不用刷下位机，也有远程控制工具，决定拿树莓派先试一下。</p>
+<h2 id="2-安装-OctoPrint（OctoPi-镜像）"><a href="#2-安装-OctoPrint（OctoPi-镜像）" class="headerlink" title="2. 安装 OctoPrint（OctoPi 镜像）"></a>2. 安装 OctoPrint（OctoPi 镜像）</h2><ul>
+<li><p>下载 OctoPi 镜像：</p>
+<ul>
+<li>OctoPi 官网: <a href="https://octoprint.org/download/">https://octoprint.org/download/</a></li>
+</ul>
+</li>
+<li><p>校验镜像 SHA256</p>
+</li>
+<li><p>插入树莓派，启动 OctoPi。</p>
+<blockquote>
+<p>OctoPi和普通raspberryPi使用流程类似，默认为无桌面版。</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<hr>
+<h2 id="3-配置-Wi-Fi"><a href="#3-配置-Wi-Fi" class="headerlink" title="3. 配置 Wi-Fi"></a>3. 配置 Wi-Fi</h2><ul>
+<li>编辑 <code>octopi-wpa-supplicant.txt</code> 文件：</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev</span><br><span class="line">update_config=1</span><br><span class="line">country=CN</span><br><span class="line"></span><br><span class="line">network=&#123;</span><br><span class="line">    ssid=&quot;你的SSID&quot;</span><br><span class="line">    psk=&quot;你的密码&quot;</span><br><span class="line">    key_mgmt=WPA-PSK</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面是官方文档的内容【0&#x2F;15版本后），GPT也这样说。</p>
+<ul>
+<li><p>反正我没找到这个文件，root下面有一个octopi-network.txt，里面写：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Using this file to configure your network connection is no longer supported.</span><br><span class="line">#</span><br><span class="line"># Please use wifi.nmconnection instead.</span><br></pre></td></tr></table></figure>
 
-<h4 id="施工中…"><a href="#施工中…" class="headerlink" title="施工中…"></a>施工中…</h4><p>但是平衡摆并没有做好，<del>因为我还没学会怎么调pid</del>。<br>由于pid调节器基于js，似乎各个浏览器运行结果也不一致，目前没什么好的思路。<br>→ <a href="https://www.youtube.com/watch?v=9gQQAO4I1Ck%3Elinks.html" title="How to train simple AIs to balance a double pendulum">视频</a>v</p>
+<p>那又去找 wifi.nmconnection ，果然有：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[connection]</span><br><span class="line">id=wifi</span><br><span class="line">uuid=593819b8-135a-4a3e-9611-c36cdeadbeef</span><br><span class="line">type=wifi</span><br><span class="line">interface-name=wlan0</span><br><span class="line"></span><br><span class="line">[wifi]</span><br><span class="line">mode=infrastructure</span><br><span class="line">ssid=这里写热点</span><br><span class="line"></span><br><span class="line">[wifi-security]</span><br><span class="line">auth-alg=open</span><br><span class="line">key-mgmt=wpa-psk</span><br><span class="line">psk=这里写密码</span><br><span class="line"></span><br><span class="line">[ipv4]</span><br><span class="line">method=auto</span><br><span class="line"></span><br><span class="line">[ipv6]</span><br><span class="line">addr-gen-mode=default</span><br><span class="line">method=auto</span><br><span class="line"></span><br><span class="line">[proxy]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>配置好之后记得取消注释</p>
+</li>
+<li><p>重启树莓派，OctoPi 连接 Wi-Fi：</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ifconfig wlan0</span><br><span class="line">ping 192.168.43.1  <span class="comment">#这是我的，你填你的</span></span><br></pre></td></tr></table></figure>
+<p>然后就能用了，电脑打开192.168.43.1跟着octopi完成打印配置即可。</p>
+<hr>
+<h2 id="4-发现校园网认证限制"><a href="#4-发现校园网认证限制" class="headerlink" title="4. 发现校园网认证限制"></a>4. 发现校园网认证限制</h2><ul>
+<li>实验室肯定不能再用手机热点，校园网需要网页认证，无法直接联网访问 OctoPrint。</li>
+<li>决定安装 <strong>树莓派桌面环境</strong> 和 <strong>浏览器</strong>。</li>
+</ul>
+<hr>
+<h2 id="5-安装桌面和浏览器"><a href="#5-安装桌面和浏览器" class="headerlink" title="5. 安装桌面和浏览器"></a>5. 安装桌面和浏览器</h2><p>安装桌面octopi提供了一条命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">this image comes without a desktop enuironment installed because it&#x27;s not required for running OctoPrint. If you want a desktop enuironment you can install it uia </span><br><span class="line">sudo /opt/octopi/scripts/install-desktop</span><br></pre></td></tr></table></figure>
+
+<p>一次竟然成功了：）</p>
+<p><img src="/../images/cat/octopi-desktop.png"></p>
+<p>重启之后在桌面环境打开vnc</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt upgrade -y</span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> apt install chromium-browser -y       <span class="comment"># 安装 Chromium 浏览器</span></span><br><span class="line"><span class="built_in">sudo</span> apt install firefox-esr -y            <span class="comment"># 可选安装 Firefox，之后如果要tailscale穿透的话国内还是火狐方便一点</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>启动桌面后使用浏览器访问校园网认证页面：</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">http://[校园网认证页面] #不多赘述</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="6-使用-OctoPrint"><a href="#6-使用-OctoPrint" class="headerlink" title="6. 使用 OctoPrint"></a>6. 使用 OctoPrint</h2><ul>
+<li>浏览器访问本地 OctoPrint：</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">http://192.168.43.80/#control</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>完成打印机连接、控制和状态监控。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>准备先试一下OctoPrint自带插件，不行的话tailscale也挺方便，就是不能和clash兼容。</p>
+<p>发现插件仓库里有<a href="https://plugins.octoprint.org/plugins/octoeverywhere/">OctoEverywhere - Free Remote Access, AI Failure Detection, And More!</a></p>
+<p>插件仓库显示不可用，但是提供了URL和pip的方法，多试几次成功安装。</p>
+<p>不知道是校园网还是什么问题，响应很慢</p>
+<p>想要用octoprint远程访问我的打印机，都连手机热点的话，<a href="http://192.168.43.80/%E6%9C%AC%E5%9C%B0%E8%AE%BF%E9%97%AE%E6%B2%A1%E9%97%AE%E9%A2%98%EF%BC%8C">http://192.168.43.80/本地访问没问题，</a><br><img src="/../images/data/037e9b2c89d41a0dc79c2b1d759c31bf.png" alt="img"><br>，尝试远程连接电脑换学校wifi，树莓派依旧连热点也可以<br><img src="/../images/data/30bd7c6af87ed05b363075ecc817e53d.png" alt="img"><br>，之后树莓派换wifi就失败了<br><img src="/../images/data/10401fbac2dd4dda343aa7c65012f0d1.png" alt="img"></p>
+<p>所以最终解决方案还是tailscale  <a href="https://tailscale.com/kb">文档 · Tailscale 文档 — Docs · Tailscale Docs</a></p>
+<p>这样似乎没法用AI监控打印质量，也许将来截取视频流再做检测。</p>
+<blockquote>
+<p>windows安装tailscale可能报错“出现严重错误”，考虑使用clash的缘故，虚拟机也安装失败（<a href="https://tailscale.com/kb/1105/other-vpns">我可以将 Tailscale 与其他 VPN 一起使用吗？· Tailscale 文档 — Can I use Tailscale alongside other VPNs? · Tailscale Docs</a>）没有太好的解决方案：（</p>
+</blockquote>
+<p>打开了一个services.msc 的 iphlpsvc ，改为自动，不知道是否有其他风险。</p>
 ]]></content>
-      <categories>
-        <category>HTML交互页面</category>
-      </categories>
-      <tags>
-        <tag>物理</tag>
-        <tag>pid</tag>
-        <tag>控制系统</tag>
-      </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/2025/08/26/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%85%8D%E7%BD%AE/</url>
+    <title>宠物喂食器</title>
+    <url>/2025/08/15/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<h2 id="关于换源："><a href="#关于换源：" class="headerlink" title="关于换源："></a>关于换源：</h2><p>直接覆盖写入 <code>sources.list</code></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo tee /etc/apt/sources.list &gt; /dev/null &lt;&lt; &#x27;EOF&#x27;</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm main contrib non-free non-free-firmware</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmware</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-backports main contrib non-free non-free-firmware</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/debian-security bookworm-security main contrib non-free non-free-firmware</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
 
@@ -975,6 +1238,17 @@
 </li>
 </ul>
 ]]></content>
+      <categories>
+        <category>记录</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>树莓派配置</tag>
+        <tag>树莓派</tag>
+        <tag>HTML</tag>
+        <tag>ngork</tag>
+        <tag>tailscale</tag>
+      </tags>
   </entry>
   <entry>
     <title>火点数据可视化</title>
@@ -990,159 +1264,6 @@
       </categories>
       <tags>
         <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>建站小记</title>
-    <url>/2025/07/02/%E5%BB%BA%E7%AB%99%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<h3 id="2025-6-24"><a href="#2025-6-24" class="headerlink" title="2025.6.24"></a>2025.6.24</h3><p><del>注册域名，购买服务器，购买域名备案，购买云服务器，购买域名解析，购买SSL证书，配置Nginx，配置SSL，配置MySQL，配置PHP，配置Git，配置GitHub，配置Hexo，配置主题，配置评论插件，配置搜索插件，配置统计插件，配置域名，配置网站，配置网站统计，配置网站地图，配置网站SEO，配置网站收录，配置网站安全，配置网站备案，配置网站优化，配置网站推广，配置网站内容，配置网站广告，配置网站推广，配置网站流量，配置网站流量优化，配置网站流量监控，配置网站流量分析，配置网站流量导入，配置网站流量导出.</del>  </p>
-<p>⬆⬆以上全是Fitten Code自动生成，这玩意总是打断写作思路，像是这样：<br><img src="https://cdn.jsdelivr.net/gh/o0wde0o/blog-image@main/data/image.png" alt="alt text"><br>或者这样：<br><img src="https://cdn.jsdelivr.net/gh/o0wde0o/blog-image@main/data/image-1.png" alt="alt text"><br>什么自卖自夸（莫名其妙，留下来好了。)</p>
-<p><strong>言归正传</strong>  </p>
-<h3 id="6-24-尝试搭建个人博客的第一天。"><a href="#6-24-尝试搭建个人博客的第一天。" class="headerlink" title="6.24 尝试搭建个人博客的第一天。"></a>6.24<span style="font-weight: normal; font-size: 1rem;"> 尝试搭建个人博客的第一天。</span></h3><p>其实也不是第一天，之前写过一些简单的HTML网页，比如用户登录页面、拉取表单、CSS，JS美化样式之类。现在我在这些网页里，选出一些有趣的放在<a href="12342">HTML交互页面</a>分类下面。</p>
-<ul>
-<li>尝试用Github.io + GitHub Desktop建站<del>我懒，不喜欢敲命令</del>，这样也不需要买服务器，当时页面上除了index.html就是各种零零散散的小玩意。</li>
-<li>自己写还是不太现实，本人编程水平，代码能运行不报错就谢天谢地了（搞前端不到十个小时）；即使用AI帮我搞出一个功能齐全的博客也很容易半途而费，计划暂时搁置。</li>
-</ul>
-<h3 id="6-26"><a href="#6-26" class="headerlink" title="6.26"></a>6.26</h3><p>之前了解过云服务器，宝塔面板还有其它构建教程， PHP+SQL 架构还是太超前了，我只是搞点静态博客试试，实在有需求再说，总结起来大概要满足以下要求：</p>
-<ol>
-<li><p>外观方面：</p>
-<ul>
-<li>蓝色主题，如果不是，那么至少可以修改为蓝色系风格。</li>
-<li>简洁美观，不要眼花缭乱的主页，不要二次元。</li>
-</ul>
-</li>
-<li><p>功能方面：</p>
-<ul>
-<li><p>Github.io 托管，没有服务器。</p>
-</li>
-<li><p>文章满足多级分类，不是平铺型的，比如</p>
-<p>​    -教程：</p>
-<p>​        -python教程；</p>
-<p>​        -C++教程；</p>
-<p>​    -学习：</p>
-<p>​        -线性代数；</p>
-<p>​        -OpenCV；</p>
-</li>
-<li><p>如果可以的话，添加说说&#x2F;评论区功能，希望朋友们可以和我交流&#x2F;指正我的错误。</p>
-</li>
-</ul>
-</li>
-</ol>
-<p>那么去看看别人的博客好了，最后选了某Argon主题，基本满足我的需求，但是具体怎么做？去问GPT，牠给出如下建议：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/o0wde0o/blog-image@main/data/image-20250715035925779.png" alt="image-20250715035925779"></p>
-<p>记住这句<strong>Argon UI 魔改版</strong>，</p>
-<p>以后人们迟早都被AI给害死（暴论）。</p>
-<p>那就开始呗，</p>
-<ul>
-<li><p>npm（说了我没搞过前端，不过包管理还挺方便），node.js，Hexo 都配置好。</p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">hexo init .</span><br><span class="line">npm install</span><br><span class="line">hexo server</span><br><span class="line"># 访问 http://localhost:<span class="number">4000</span></span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line"># 安装部署插件</span><br></pre></td></tr></table></figure>
-
-<p>看到(<a href="https://o0wde0o.github.io/2025/06/24/hello-world/">Hello World</a>)，胜利的曙光似乎就在眼前；</p>
-</li>
-<li><p>此时GPT开始发力：</p>
-</li>
-</ul>
-<img src="https://cdn.jsdelivr.net/gh/o0wde0o/blog-image@main/data/image-20250715041958743.png" alt="image-20250715041958743" style="zoom: 70%;" />
-
-
-
-<p>哦不支持啊，那我们在干什么呢，陪你玩吗？感觉被AI耍了😠</p>
-<p>小伙还给出了一堆修改底层文件代码的方案。。。（我根本找不见牠给的文件夹和什么.scss，紧急叫停）</p>
-<ul>
-<li><p>由于不想重做，只好基于Hexo找找合适的主题，看着Butterfly不错，后续寻找教程的时候，确实有不少这个主题的博客（不排除浏览器记住我搜索词的原因）</p>
-</li>
-<li><p>勉强步入正轨吧，试试 .yml 文件配置功能，有点眼花缭乱，也许我将来会写一篇文章，给出更详细的中文注释，这样可以快速上手，链接在这里，没有就是没写好  -&gt;<a href="">Hexo + Butterfly 博客初始配置</a>。</p>
-</li>
-</ul>
-<h3 id="6-27"><a href="#6-27" class="headerlink" title="6.27"></a>6.27</h3><p>这几天大概做：</p>
-<ol>
-<li>主题美化</li>
-<li>评论&#x2F;说说（一直很好奇怎么实现P2P交互，后来发现其实是中心化服务和后端 API 支撑的）</li>
-<li>音乐播放</li>
-<li>桌宠（这个能做出来是当时没想到的，开源万岁！）</li>
-</ol>
-<p>事情太多不知道从哪记起，</p>
-<ul>
-<li>上传之前的文章试试水，大概六月的都是这样，就是作业报告&#x2F;HTML页面</li>
-<li>修改所有背景图片，设置切换夜间模式时自动切换夜间图片（仅在主页生效）</li>
-<li>尝试<a href="https://twikoo.js.org/quick-start.html">快速上手 | Twikoo </a>部署，没做成，可能是哪一步错了，Vercel一直部署不了，回家</li>
-</ul>
-<h3 id="6-28"><a href="#6-28" class="headerlink" title="6.28"></a>6.28</h3><p>继续之前的工作，</p>
-<ul>
-<li><p>用<a href="https://waline.js.org/guide/get-started/">快速上手 | Waline</a>一次成功</p>
-</li>
-<li><p>rain 特效，打字机效果</p>
-</li>
-<li><p>修复文字与背景颜色接近的问题</p>
-</li>
-<li><p>每次测试好麻烦，写个bat脚本一键部署</p>
-<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line">:: Hexo 控制台</span><br><span class="line">:: 功能：R=本地运行 | D=部署 | N=新建文章 | Q=退出</span><br><span class="line">:: 优化：自动终止占用<span class="number">4000</span>端口的进程，支持中文文章名</span><br><span class="line">:: 配色：深蓝背景，青色文字（<span class="built_in">color</span> <span class="number">03</span>）</span><br><span class="line"></span><br><span class="line"><span class="built_in">chcp</span> <span class="number">65001</span> &gt;<span class="built_in">nul</span></span><br><span class="line"><span class="built_in">title</span> Hexo 控制台 (R=运行 D=部署 N=新建 Q=退出)</span><br><span class="line"><span class="built_in">color</span> <span class="number">03</span></span><br><span class="line"><span class="built_in">cls</span></span><br><span class="line"></span><br><span class="line">:menu</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span>  [Hexo 控制台 v2.<span class="number">0</span>]</span><br><span class="line"><span class="built_in">echo</span>  --------------------------</span><br><span class="line"><span class="built_in">echo</span>  R = 清理并启动本地服务（自动终止旧进程+开浏览器）</span><br><span class="line"><span class="built_in">echo</span>  --------------------------</span><br><span class="line"><span class="built_in">echo</span>  D = 清理并部署到 GitHub</span><br><span class="line"><span class="built_in">echo</span>  --------------------------</span><br><span class="line"><span class="built_in">echo</span>  N = 新建文章（支持中文标题）</span><br><span class="line"><span class="built_in">echo</span>  --------------------------</span><br><span class="line"><span class="built_in">echo</span>  Q = 退出控制台</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"></span><br><span class="line">:choice</span><br><span class="line">choice /C RDNQ /N /M &quot;请选择: &quot; </span><br><span class="line"><span class="keyword">if</span> <span class="keyword">errorlevel</span> <span class="number">4</span> <span class="keyword">goto</span> <span class="keyword">exit</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">errorlevel</span> <span class="number">3</span> <span class="keyword">goto</span> newpost</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">errorlevel</span> <span class="number">2</span> <span class="keyword">goto</span> deploy</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">errorlevel</span> <span class="number">1</span> <span class="keyword">goto</span> serve</span><br><span class="line"></span><br><span class="line">:serve</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span> [正在终止可能存在的旧服务进程...]</span><br><span class="line"><span class="built_in">taskkill</span> /f /im node.exe &gt;<span class="built_in">nul</span> <span class="number">2</span>&gt;&amp;<span class="number">1</span></span><br><span class="line">timeout /t <span class="number">1</span> &gt;<span class="built_in">nul</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> [正在生成静态文件...]</span><br><span class="line"><span class="keyword">call</span> hexo clean &amp;&amp; <span class="keyword">call</span> hexo g</span><br><span class="line"><span class="keyword">if</span> <span class="variable">%errorlevel%</span> <span class="keyword">neq</span> <span class="number">0</span> (</span><br><span class="line">    <span class="built_in">echo</span> [!] 生成失败！错误代码：<span class="variable">%errorlevel%</span></span><br><span class="line">    <span class="built_in">pause</span> &gt;<span class="built_in">nul</span></span><br><span class="line">    <span class="keyword">goto</span> menu</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> [正在启动本地服务...]</span><br><span class="line"><span class="built_in">start</span> &quot;&quot; /B <span class="built_in">cmd</span> /c &quot;hexo s --draft &amp;&amp; <span class="keyword">exit</span>&quot;  :: 显示草稿</span><br><span class="line"></span><br><span class="line">:: 服务健康检查</span><br><span class="line"><span class="built_in">echo</span> [等待服务启动...]</span><br><span class="line">timeout /t <span class="number">5</span> &gt;<span class="built_in">nul</span></span><br><span class="line">netstat -ano | <span class="built_in">findstr</span> &quot;:<span class="number">4000</span>&quot; &gt;<span class="built_in">nul</span></span><br><span class="line"><span class="keyword">if</span> <span class="variable">%errorlevel%</span> <span class="keyword">neq</span> <span class="number">0</span> (</span><br><span class="line">    <span class="built_in">echo</span> [!] 服务启动失败！请检查：</span><br><span class="line">    <span class="built_in">echo</span>    <span class="number">1</span>. 是否安装hexo-cli</span><br><span class="line">    <span class="built_in">echo</span>    <span class="number">2</span>. 是否在Hexo项目目录</span><br><span class="line">    <span class="built_in">pause</span> &gt;<span class="built_in">nul</span></span><br><span class="line">    <span class="keyword">goto</span> menu</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="built_in">start</span> http://localhost:<span class="number">4000</span>/</span><br><span class="line"><span class="built_in">echo</span> [√] 服务已启动 | 浏览器已打开</span><br><span class="line"><span class="built_in">echo</span> 按任意键返回菜单...</span><br><span class="line"><span class="built_in">pause</span> &gt;<span class="built_in">nul</span></span><br><span class="line"><span class="keyword">goto</span> menu</span><br><span class="line"></span><br><span class="line">:deploy</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span> [正在清理并生成静态文件...]</span><br><span class="line"><span class="keyword">call</span> hexo clean &amp;&amp; <span class="keyword">call</span> hexo g</span><br><span class="line"><span class="keyword">if</span> <span class="variable">%errorlevel%</span> <span class="keyword">neq</span> <span class="number">0</span> (</span><br><span class="line">    <span class="built_in">echo</span> [!] 生成失败！错误代码：<span class="variable">%errorlevel%</span></span><br><span class="line">    <span class="built_in">pause</span> &gt;<span class="built_in">nul</span></span><br><span class="line">    <span class="keyword">goto</span> menu</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> [正在部署到GitHub...]</span><br><span class="line"><span class="keyword">call</span> hexo d</span><br><span class="line"><span class="keyword">if</span> <span class="variable">%errorlevel%</span> <span class="keyword">neq</span> <span class="number">0</span> (</span><br><span class="line">    <span class="built_in">echo</span> [!] 部署失败！请检查：</span><br><span class="line">    <span class="built_in">echo</span>    <span class="number">1</span>. Git配置是否正确</span><br><span class="line">    <span class="built_in">echo</span>    <span class="number">2</span>. 网络连接是否正常</span><br><span class="line">) <span class="keyword">else</span> (</span><br><span class="line">    <span class="built_in">echo</span> [√] 部署成功！^&gt; 可访问：https://你的用户名.github.io</span><br><span class="line">)</span><br><span class="line"><span class="built_in">pause</span> &gt;<span class="built_in">nul</span></span><br><span class="line"><span class="keyword">goto</span> menu</span><br><span class="line"></span><br><span class="line">:newpost</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">set</span> /p postname=请输入文章标题（支持中文）:</span><br><span class="line"><span class="built_in">echo</span> [正在创建文章...]</span><br><span class="line"><span class="keyword">call</span> hexo new post &quot;<span class="variable">%postname%</span>&quot;</span><br><span class="line"><span class="keyword">if</span> <span class="variable">%errorlevel%</span> <span class="keyword">neq</span> <span class="number">0</span> (</span><br><span class="line">    <span class="built_in">echo</span> [!] 创建失败！请检查：</span><br><span class="line">    <span class="built_in">echo</span>    <span class="number">1</span>. 是否在Hexo项目目录</span><br><span class="line">    <span class="built_in">echo</span>    <span class="number">2</span>. 标题是否含特殊字符</span><br><span class="line">) <span class="keyword">else</span> (</span><br><span class="line">    <span class="built_in">echo</span> [√] 文章已创建：source/_posts/<span class="variable">%postname%</span>.<span class="built_in">md</span></span><br><span class="line">    :: 自动用VSCode打开（需安装VSCode）</span><br><span class="line">    code &quot;source/_posts/<span class="variable">%postname%</span>.<span class="built_in">md</span>&quot; <span class="number">2</span>&gt;<span class="built_in">nul</span> || (</span><br><span class="line">        <span class="built_in">echo</span> [提示] 未检测到VSCode，请手动编辑文件</span><br><span class="line">    )</span><br><span class="line">)</span><br><span class="line"><span class="built_in">pause</span> &gt;<span class="built_in">nul</span></span><br><span class="line"><span class="keyword">goto</span> menu</span><br><span class="line"></span><br><span class="line">:<span class="keyword">exit</span></span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span> [正在清理进程...]</span><br><span class="line"><span class="built_in">taskkill</span> /f /im node.exe &gt;<span class="built_in">nul</span> <span class="number">2</span>&gt;&amp;<span class="number">1</span></span><br><span class="line"><span class="built_in">echo</span> 正在退出...</span><br><span class="line">timeout /t <span class="number">1</span> &gt;<span class="built_in">nul</span></span><br><span class="line"><span class="keyword">exit</span></span><br></pre></td></tr></table></figure>
-
-<p>也可以搞简单点，都行：）</p>
-</li>
-<li><p>查看了大部分配置文件，发现 aplayer 和 Live2d 有封装好的文件，看来有可行性</p>
-</li>
-</ul>
-<h3 id="6-29"><a href="#6-29" class="headerlink" title="6.29"></a>6.29</h3><p>这是<a href="https://aplayer.js.org/#/zh-Hans/">首页 - APlayer</a>文档，</p>
-<ul>
-<li>修改鼠标指针样式，奥日（Ori）风，由于不熟悉容器标签这些，花了点时间</li>
-<li>Aplayer可以直接引，但是我不满意，改成了悬浮球样式（这个应该是首创）</li>
-<li>为了切换页面不中断播放，使用pjax，找了几首歌试试，效果不错</li>
-<li>页面搜索，不蒜子都打开</li>
-</ul>
-<h3 id="6-30"><a href="#6-30" class="headerlink" title="6.30"></a>6.30</h3><p>图书馆周一闭馆，那我也休息，哈哈！</p>
-<h3 id="7-1"><a href="#7-1" class="headerlink" title="7.1"></a>7.1</h3><p>最艰难的Live 2D，整整搞了一天</p>
-<ul>
-<li><p>首先找找GitHub开源，因为实现的网站很多，应该是有个可用模板</p>
-</li>
-<li><p>他们管这个叫看板娘：<a href="https://github.com/stevenjoezhang/live2d-widget">https://github.com/stevenjoezhang/live2d-widget</a></p>
-</li>
-<li><p>过于集成化，没法导入我的模型：感谢UP<a href="https://www.bilibili.com/video/BV1EX4y1T7pG/">【光遇】黄鼠狼平菇-live2d极简模型展示_哔哩哔哩_bilibili</a></p>
-</li>
-<li><p>找到<a href="https://github.com/guansss/pixi-live2d-display">guansss&#x2F;pixi-live2d-display: A PixiJS plugin to display Live2D models of any kind.</a>支持导入自己模型问题是他们需要解包后的动作json文件，成品都是LPK，没法用</p>
-</li>
-<li><p>在网上看了几篇文章，有点思路了：</p>
-<ol>
-<li>有人用Unity做逆向的，不会</li>
-<li>已知lpk是某种压缩文件，尝试一些在线解压，会得到一堆bin3后缀的加密文件</li>
-<li><a href="https://github.com/spawner1145/lpk-unpacker">lpk-unpacker: lpk逆向工具，支持live 2d viewerex的lpk逆向，输出为标准live2d目录形式</a>借助前人经验，用py成功得到源文件</li>
-</ol>
-</li>
-<li><p>下载<a href="https://www.live2d.com/en/">Live2D Cubism | See your creation come to life. Software that directly animates your original drawings.</a>检查我的模型是否可用：动作比较少，没有音频和视觉跟随等，不过能用</p>
-</li>
-<li><p>至此事情已经过于复杂，先在空网页做好，调试完毕，再加进我的博客，同样需要pjax技术防止我的宝贝刷新掉</p>
-</li>
-</ul>
-<p>感觉这个光崽桌宠也是我首创，有桌宠的博客大抵千篇一律，<del>可也能是千篇十律，因为他们提供了大概十几个可换人物吧</del>，制作过程中看到开源模型库是有的，没见到有人换。</p>
-<h3 id="7-2"><a href="#7-2" class="headerlink" title="7.2"></a>7.2</h3><p>终于想起来写总结了哈哈，以下是 todo list：</p>
-<ul>
-<li>解决主页之外的图片切换</li>
-<li>记录写完了，应当做个说明文档供诸君采纳</li>
-<li>把我的光遇记录贴补上<del>主要是时间太久懒得翻照片</del></li>
-<li>由于butterfly没有时间轴（其实是有一个，但是效果不怎么样），考虑换这个<a href="https://plume.pengzhanbo.cn/">Vuepress Theme Plume | Plume 主题</a></li>
-</ul>
-<p>其实也该学下vue或者react的）这几天纯硬闯</p>
-<ul>
-<li>之前的项目上传一下，更丰富的页面功能</li>
-</ul>
-<h3 id="7-12"><a href="#7-12" class="headerlink" title="7.12"></a>7.12</h3><p>当事情趋于解决，我就会懈怠，总是如此呢</p>
-<ul>
-<li>更新了sky光·遇分类的横滚首页栏</li>
-<li>localsend 传图，好多，不想整理）</li>
-</ul>
-<h3 id="7-15"><a href="#7-15" class="headerlink" title="7.15"></a>7.15</h3><ul>
-<li>想写个五子棋人机对弈，α-β剪枝算法不错，正在学习</li>
-</ul>
-<h3 id="7-18"><a href="#7-18" class="headerlink" title="7.18"></a>7.18</h3><ul>
-<li>又休息上了，不怎么会整合局面判断，局面判断好麻烦，而且JS计算速度堪忧🤔</li>
-<li>增加更多加载&#x2F;404动画 ；加载时PC端与移动设备分别显示</li>
-</ul>
-]]></content>
-      <categories>
-        <category>初成之业</category>
-      </categories>
-      <tags>
-        <tag>记录</tag>
       </tags>
   </entry>
   <entry>
@@ -1206,6 +1327,16 @@ return 0;
     <title>分类</title>
     <url>/categories/index.html</url>
     <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>标签</title>
+    <url>/tags/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/live2d/waifu-tips.json</url>
+    <content><![CDATA[{"mouseover":[{"selector":".menu-item-home a","text":["点击前往首页，想回到上一页可以使用浏览器的后退功能哦。","点它就可以回到首页啦！","回首页看看吧。"]},{"selector":"#card-info-btn","text":["你想知道我家主人是谁吗？","这里有一些关于我家主人的秘密哦，要不要看看呢？","发现主人出没地点！"]},{"selector":".menu-item-tags a","text":["点击就可以看文章的标签啦！","点击来查看所有标签哦。"]},{"selector":".menu-item-categories a","text":["文章都分类好啦～","点击来查看文章分类哦。"]},{"selector":".menu-item-archives a","text":["翻页比较麻烦吗，那就来看看文章归档吧。","文章目录都整理在这里啦！"]},{"selector":".menu-item-friends a","text":["这是我的朋友们哦ヾ(◍°∇°◍)ﾉﾞ","要去大佬们的家看看吗？","要去拜访一下我的朋友们吗？"]},{"selector":".menu-item-search a","text":["找不到想看的内容？搜索看看吧！","在找什么东西呢，需要帮忙吗？"]},{"selector":".menu-item a","text":["快看看这里都有什么呢？"]},{"selector":".site-author","text":["我家主人好看吗？","这是我家主人(*´∇｀*)"]},{"selector":".site-state","text":["这是文章的统计信息～","要不要点进去看看？"]},{"selector":".feed-link a","text":["这里可以使用 RSS 订阅呢！","利用 feed 订阅器，就能快速知道博客有没有更新了呢。"]},{"selector":".cc-opacity, .post-copyright-author","text":["要记得规范转载哦。","所有文章均采用 CC BY-NC-SA 4.0 许可协议～","转载前要先注意下文章的版权协议呢。"]},{"selector":".links-of-author","text":["这里是主人的常驻地址哦。","这里有主人的联系方式！"]},{"selector":".followme","text":["手机扫一下就能继续看，很方便呢～","扫一扫，打开新世界的大门！"]},{"selector":".fancybox img, img.medium-zoom-image","text":["点击图片可以放大呢！"]},{"selector":".copy-btn","text":["代码可以直接点击复制哟。"]},{"selector":".highlight .table-container, .gist","text":["GitHub！我是新手！","PHP 是最好的语言！"]},{"selector":"a[href^='mailto']","text":["邮件我会及时回复的！","点击就可以发送邮件啦～"]},{"selector":"a[href^='/tags/']","text":["要去看看 <span>{text}</span> 标签么？","点它可以查看此标签下的所有文章哟！"]},{"selector":"a[href^='/categories/']","text":["要去看看 <span>{text}</span> 分类么？","点它可以查看此分类下的所有文章哟！"]},{"selector":".post-title-link","text":["要看看 <span>{text}</span> 这篇文章吗？"]},{"selector":"a[rel='contents']","text":["点击来阅读全文哦。"]},{"selector":"a[itemprop='discussionUrl']","text":["要去看看评论吗？"]},{"selector":".container a[href^='http'], .nav-link .nav-text","text":["要去看看 <span>{text}</span> 么？","去 <span>{text}</span> 逛逛吧。","到 <span>{text}</span> 看看吧。"]},{"selector":".back-to-top","text":["点它就可以回到顶部啦！","又回到最初的起点～","要回到开始的地方么？"]},{"selector":".reward-container","text":["我是不是棒棒哒～快给我点赞吧！","要打赏我嘛？好期待啊～","主人最近在吃土呢，很辛苦的样子，给他一些钱钱吧～"]},{"selector":"#wechat","text":["这是我的微信二维码～"]},{"selector":"#alipay","text":["这是我的支付宝哦！"]},{"selector":"#bitcoin","text":["这是我的比特币账号！"]},{"selector":"#needsharebutton-postbottom .btn","text":["好东西要让更多人知道才行哦。","觉得文章有帮助的话，可以分享给更多需要的朋友呢。"]},{"selector":".need-share-button_weibo","text":["微博？来分享一波喵！"]},{"selector":".need-share-button_wechat","text":["分享到微信吧！"]},{"selector":".need-share-button_douban","text":["分享到豆瓣好像也不错！"]},{"selector":".need-share-button_qqzone","text":["QQ 空间，一键转发，耶～"]},{"selector":".need-share-button_twitter","text":["Twitter？好像是不存在的东西？"]},{"selector":".need-share-button_facebook","text":["emmm…FB 好像也是不存在的东西？"]},{"selector":".post-nav-item a[rel='next']","text":["来看看下一篇文章吧。","点它可以看下一篇文章哦！","要翻到下一篇文章吗？"]},{"selector":".post-nav-item a[rel='prev']","text":["来看看上一篇文章吧。","点它可以看上一篇文章哦！","要翻到上一篇文章吗？"]},{"selector":".extend.next","text":["去下一页看看吧。","点它可以前进哦！","要翻到下一页吗？"]},{"selector":".extend.prev","text":["去上一页看看吧。","点它可以后退哦！","要翻到上一页吗？"]},{"selector":"input.vnick","text":["该怎么称呼你呢？","留下你的尊姓大名！"]},{"selector":".vmail","text":["留下你的邮箱，不然就是无头像人士了！","记得设置好 Gravatar 头像哦！","为了方便通知你最新消息，一定要留下邮箱！"]},{"selector":".vlink","text":["快快告诉我你的家在哪里，好让我去参观参观！"]},{"selector":".veditor","text":["想要去评论些什么吗？","要说点什么吗？","觉得博客不错？快来留言和主人交流吧！"]},{"selector":".vcontrol a","text":["你会不会熟练使用 Markdown 呀？","使用 Markdown 让评论更美观吧～"]},{"selector":".vemoji-btn","text":["要插入一个萌萌哒的表情吗？","要来一发表情吗？"]},{"selector":".vpreview-btn","text":["要预览一下你的发言吗？","快看看你的评论有多少负熵！"]},{"selector":".vsubmit","text":["评论没有审核，要对自己的发言负责哦～","要提交了吗，请耐心等待回复哦～"]},{"selector":".vcontent","text":["哇，快看看这个精彩评论！","如果有疑问，请尽快留言哦～"]}],"click":[{"selector":".veditor","text":["要吐槽些什么呢？","一定要认真填写喵～","有什么想说的吗？"]},{"selector":".vsubmit","text":["输入验证码就可以提交评论啦～"]}],"seasons":[{"date":"01/01","text":"<span>元旦</span>了呢，新的一年又开始了，今年是{year}年～"},{"date":"02/14","text":"又是一年<span>情人节</span>，{year}年找到对象了嘛～"},{"date":"03/08","text":"今天是<span>国际妇女节</span>！"},{"date":"03/12","text":"今天是<span>植树节</span>，要保护环境呀！"},{"date":"04/01","text":"悄悄告诉你一个秘密～<span>今天是愚人节，不要被骗了哦～</span>"},{"date":"05/01","text":"今天是<span>五一劳动节</span>，计划好假期去哪里了吗～"},{"date":"06/01","text":"<span>儿童节</span>了呢，快活的时光总是短暂，要是永远长不大该多好啊…"},{"date":"09/03","text":"<span>中国人民抗日战争胜利纪念日</span>，铭记历史、缅怀先烈、珍爱和平、开创未来。"},{"date":"09/10","text":"<span>教师节</span>，在学校要给老师问声好呀～"},{"date":"10/01","text":"<span>国庆节</span>到了，为祖国母亲庆生！"},{"date":"11/05-11/12","text":"今年的<span>双十一</span>是和谁一起过的呢～"},{"date":"12/20-12/31","text":"这几天是<span>圣诞节</span>，主人肯定又去剁手买买买了～"}],"time":[{"hour":"6-7","text":"早上好！一日之计在于晨，美好的一天就要开始了～"},{"hour":"8-11","text":"上午好！工作顺利嘛，不要久坐，多起来走动走动哦！"},{"hour":"12-13","text":"中午了，工作了一个上午，现在是午餐时间！"},{"hour":"14-17","text":"午后很容易犯困呢，今天的运动目标完成了吗？"},{"hour":"18-19","text":"傍晚了！窗外夕阳的景色很美丽呢，最美不过夕阳红～"},{"hour":"20-21","text":"晚上好，今天过得怎么样？"},{"hour":"22-23","text":["已经这么晚了呀，早点休息吧，晚安～","深夜时要爱护眼睛呀！"]},{"hour":"0-5","text":"你是夜猫子呀？这么晚还不睡觉，明天起的来嘛？"}],"message":{"default":["好久不见，日子过得好快呢……","记得把小家加入收藏夹哦！"],"console":"哈哈，你打开了控制台，是想要看看我的小秘密吗？","copy":"你都复制了些什么呀，转载要记得加上出处哦！","visibilitychange":"哇，你终于回来了～","changeSuccess":"我的新衣服好看嘛？","changeFail":"我还没有其他衣服呢！","photo":"照好了嘛，是不是很可爱呢？","goodbye":"愿你有一天能与重要的人重逢。","hitokoto":"这句一言来自 <span>「$1」</span>，是 <span>$2</span> 在 hitokoto.cn 投稿的。","welcome":"欢迎阅读<span>「$1」</span>","referrer":"Hello！来自 <span>$1</span> 的朋友","tapBody":["是…是不小心碰到了吧…","你看到我的小熊了吗？","再摸的话我可要报警了！⌇●﹏●⌇","110 吗，这里有个变态一直在摸我(ó﹏ò｡)","不要摸我了，我会打你的！","干嘛动我呀！小心我咬你！","别摸我，有什么好摸的！"],"hoverHead":["不要摸头啦~","发型会乱的！"],"hoverBody":["痒痒的~","看看我的新斗篷！"],"hoverTail":["尾巴不能碰！","再碰就咬你哦！"]}}]]></content>
   </entry>
   <entry>
     <title></title>
@@ -1999,22 +2130,6 @@ return 0;
     <content><![CDATA[{"Version":3,"FileReferences":{"Moc":"FileReferences_Moc_0.moc3","Textures":["textures/FileReferences_Textures_0_0.png","textures/FileReferences_Textures_1_0.png"],"Physics":"physics/FileReferences_Physics_0.physic3.json","Pose":"physics/FileReferences_Physics_0.physic3.json","Motions":{"Tap":[{"File":"motions/tap/FileReferences_Motions_Tap_0_File_0.motion3.json"}]}},"Controllers":{"ParamHit":{},"ParamLoop":{},"KeyTrigger":{},"EyeBlink":{"MinInterval":500,"MaxInterval":6000,"Items":[{"Id":"PARAM_EYE__OPEN","Min":0,"Max":1,"BlendMode":2,"Input":0}],"Enabled":true},"LipSync":{"Gain":5},"MouseTracking":{"SmoothTime":0.15,"Enabled":true},"AutoBreath":{"Enabled":true},"ExtraMotion":{"Enabled":true},"Accelerometer":{"Enabled":true},"Microphone":{},"Transform":{},"FaceTracking":{"Enabled":true},"ParamValue":{},"PartOpacity":{},"ArtmeshOpacity":{},"ArtmeshColor":{},"ArtmeshCulling":{"DefaultMode":0},"IntimacySystem":{}},"Options":{"TexFixed":true}}]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>/live2d/waifu-tips.json</url>
-    <content><![CDATA[{"mouseover":[{"selector":".menu-item-home a","text":["点击前往首页，想回到上一页可以使用浏览器的后退功能哦。","点它就可以回到首页啦！","回首页看看吧。"]},{"selector":"#card-info-btn","text":["你想知道我家主人是谁吗？","这里有一些关于我家主人的秘密哦，要不要看看呢？","发现主人出没地点！"]},{"selector":".menu-item-tags a","text":["点击就可以看文章的标签啦！","点击来查看所有标签哦。"]},{"selector":".menu-item-categories a","text":["文章都分类好啦～","点击来查看文章分类哦。"]},{"selector":".menu-item-archives a","text":["翻页比较麻烦吗，那就来看看文章归档吧。","文章目录都整理在这里啦！"]},{"selector":".menu-item-friends a","text":["这是我的朋友们哦ヾ(◍°∇°◍)ﾉﾞ","要去大佬们的家看看吗？","要去拜访一下我的朋友们吗？"]},{"selector":".menu-item-search a","text":["找不到想看的内容？搜索看看吧！","在找什么东西呢，需要帮忙吗？"]},{"selector":".menu-item a","text":["快看看这里都有什么呢？"]},{"selector":".site-author","text":["我家主人好看吗？","这是我家主人(*´∇｀*)"]},{"selector":".site-state","text":["这是文章的统计信息～","要不要点进去看看？"]},{"selector":".feed-link a","text":["这里可以使用 RSS 订阅呢！","利用 feed 订阅器，就能快速知道博客有没有更新了呢。"]},{"selector":".cc-opacity, .post-copyright-author","text":["要记得规范转载哦。","所有文章均采用 CC BY-NC-SA 4.0 许可协议～","转载前要先注意下文章的版权协议呢。"]},{"selector":".links-of-author","text":["这里是主人的常驻地址哦。","这里有主人的联系方式！"]},{"selector":".followme","text":["手机扫一下就能继续看，很方便呢～","扫一扫，打开新世界的大门！"]},{"selector":".fancybox img, img.medium-zoom-image","text":["点击图片可以放大呢！"]},{"selector":".copy-btn","text":["代码可以直接点击复制哟。"]},{"selector":".highlight .table-container, .gist","text":["GitHub！我是新手！","PHP 是最好的语言！"]},{"selector":"a[href^='mailto']","text":["邮件我会及时回复的！","点击就可以发送邮件啦～"]},{"selector":"a[href^='/tags/']","text":["要去看看 <span>{text}</span> 标签么？","点它可以查看此标签下的所有文章哟！"]},{"selector":"a[href^='/categories/']","text":["要去看看 <span>{text}</span> 分类么？","点它可以查看此分类下的所有文章哟！"]},{"selector":".post-title-link","text":["要看看 <span>{text}</span> 这篇文章吗？"]},{"selector":"a[rel='contents']","text":["点击来阅读全文哦。"]},{"selector":"a[itemprop='discussionUrl']","text":["要去看看评论吗？"]},{"selector":".container a[href^='http'], .nav-link .nav-text","text":["要去看看 <span>{text}</span> 么？","去 <span>{text}</span> 逛逛吧。","到 <span>{text}</span> 看看吧。"]},{"selector":".back-to-top","text":["点它就可以回到顶部啦！","又回到最初的起点～","要回到开始的地方么？"]},{"selector":".reward-container","text":["我是不是棒棒哒～快给我点赞吧！","要打赏我嘛？好期待啊～","主人最近在吃土呢，很辛苦的样子，给他一些钱钱吧～"]},{"selector":"#wechat","text":["这是我的微信二维码～"]},{"selector":"#alipay","text":["这是我的支付宝哦！"]},{"selector":"#bitcoin","text":["这是我的比特币账号！"]},{"selector":"#needsharebutton-postbottom .btn","text":["好东西要让更多人知道才行哦。","觉得文章有帮助的话，可以分享给更多需要的朋友呢。"]},{"selector":".need-share-button_weibo","text":["微博？来分享一波喵！"]},{"selector":".need-share-button_wechat","text":["分享到微信吧！"]},{"selector":".need-share-button_douban","text":["分享到豆瓣好像也不错！"]},{"selector":".need-share-button_qqzone","text":["QQ 空间，一键转发，耶～"]},{"selector":".need-share-button_twitter","text":["Twitter？好像是不存在的东西？"]},{"selector":".need-share-button_facebook","text":["emmm…FB 好像也是不存在的东西？"]},{"selector":".post-nav-item a[rel='next']","text":["来看看下一篇文章吧。","点它可以看下一篇文章哦！","要翻到下一篇文章吗？"]},{"selector":".post-nav-item a[rel='prev']","text":["来看看上一篇文章吧。","点它可以看上一篇文章哦！","要翻到上一篇文章吗？"]},{"selector":".extend.next","text":["去下一页看看吧。","点它可以前进哦！","要翻到下一页吗？"]},{"selector":".extend.prev","text":["去上一页看看吧。","点它可以后退哦！","要翻到上一页吗？"]},{"selector":"input.vnick","text":["该怎么称呼你呢？","留下你的尊姓大名！"]},{"selector":".vmail","text":["留下你的邮箱，不然就是无头像人士了！","记得设置好 Gravatar 头像哦！","为了方便通知你最新消息，一定要留下邮箱！"]},{"selector":".vlink","text":["快快告诉我你的家在哪里，好让我去参观参观！"]},{"selector":".veditor","text":["想要去评论些什么吗？","要说点什么吗？","觉得博客不错？快来留言和主人交流吧！"]},{"selector":".vcontrol a","text":["你会不会熟练使用 Markdown 呀？","使用 Markdown 让评论更美观吧～"]},{"selector":".vemoji-btn","text":["要插入一个萌萌哒的表情吗？","要来一发表情吗？"]},{"selector":".vpreview-btn","text":["要预览一下你的发言吗？","快看看你的评论有多少负熵！"]},{"selector":".vsubmit","text":["评论没有审核，要对自己的发言负责哦～","要提交了吗，请耐心等待回复哦～"]},{"selector":".vcontent","text":["哇，快看看这个精彩评论！","如果有疑问，请尽快留言哦～"]}],"click":[{"selector":".veditor","text":["要吐槽些什么呢？","一定要认真填写喵～","有什么想说的吗？"]},{"selector":".vsubmit","text":["输入验证码就可以提交评论啦～"]}],"seasons":[{"date":"01/01","text":"<span>元旦</span>了呢，新的一年又开始了，今年是{year}年～"},{"date":"02/14","text":"又是一年<span>情人节</span>，{year}年找到对象了嘛～"},{"date":"03/08","text":"今天是<span>国际妇女节</span>！"},{"date":"03/12","text":"今天是<span>植树节</span>，要保护环境呀！"},{"date":"04/01","text":"悄悄告诉你一个秘密～<span>今天是愚人节，不要被骗了哦～</span>"},{"date":"05/01","text":"今天是<span>五一劳动节</span>，计划好假期去哪里了吗～"},{"date":"06/01","text":"<span>儿童节</span>了呢，快活的时光总是短暂，要是永远长不大该多好啊…"},{"date":"09/03","text":"<span>中国人民抗日战争胜利纪念日</span>，铭记历史、缅怀先烈、珍爱和平、开创未来。"},{"date":"09/10","text":"<span>教师节</span>，在学校要给老师问声好呀～"},{"date":"10/01","text":"<span>国庆节</span>到了，为祖国母亲庆生！"},{"date":"11/05-11/12","text":"今年的<span>双十一</span>是和谁一起过的呢～"},{"date":"12/20-12/31","text":"这几天是<span>圣诞节</span>，主人肯定又去剁手买买买了～"}],"time":[{"hour":"6-7","text":"早上好！一日之计在于晨，美好的一天就要开始了～"},{"hour":"8-11","text":"上午好！工作顺利嘛，不要久坐，多起来走动走动哦！"},{"hour":"12-13","text":"中午了，工作了一个上午，现在是午餐时间！"},{"hour":"14-17","text":"午后很容易犯困呢，今天的运动目标完成了吗？"},{"hour":"18-19","text":"傍晚了！窗外夕阳的景色很美丽呢，最美不过夕阳红～"},{"hour":"20-21","text":"晚上好，今天过得怎么样？"},{"hour":"22-23","text":["已经这么晚了呀，早点休息吧，晚安～","深夜时要爱护眼睛呀！"]},{"hour":"0-5","text":"你是夜猫子呀？这么晚还不睡觉，明天起的来嘛？"}],"message":{"default":["好久不见，日子过得好快呢……","记得把小家加入收藏夹哦！"],"console":"哈哈，你打开了控制台，是想要看看我的小秘密吗？","copy":"你都复制了些什么呀，转载要记得加上出处哦！","visibilitychange":"哇，你终于回来了～","changeSuccess":"我的新衣服好看嘛？","changeFail":"我还没有其他衣服呢！","photo":"照好了嘛，是不是很可爱呢？","goodbye":"愿你有一天能与重要的人重逢。","hitokoto":"这句一言来自 <span>「$1」</span>，是 <span>$2</span> 在 hitokoto.cn 投稿的。","welcome":"欢迎阅读<span>「$1」</span>","referrer":"Hello！来自 <span>$1</span> 的朋友","tapBody":["是…是不小心碰到了吧…","你看到我的小熊了吗？","再摸的话我可要报警了！⌇●﹏●⌇","110 吗，这里有个变态一直在摸我(ó﹏ò｡)","不要摸我了，我会打你的！","干嘛动我呀！小心我咬你！","别摸我，有什么好摸的！"],"hoverHead":["不要摸头啦~","发型会乱的！"],"hoverBody":["痒痒的~","看看我的新斗篷！"],"hoverTail":["尾巴不能碰！","再碰就咬你哦！"]}}]]></content>
-  </entry>
-  <entry>
-    <title>标签</title>
-    <url>/tags/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/talk/talk.html</url>
-    <content><![CDATA[<p>这里是我第一条说说。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>说说</title>
     <url>/talk/index.html</url>
     <content><![CDATA[]]></content>
@@ -2026,12 +2141,18 @@ return 0;
   </entry>
   <entry>
     <title></title>
-    <url>/live2d/motions/tap/FileReferences_Motions_Tap_0_File_0.motion3.json</url>
-    <content><![CDATA[{"Version":3,"Meta":{"Duration":2.467,"Fps":30,"Loop":true,"AreBeziersRestricted":true,"CurveCount":8,"TotalSegmentCount":65,"TotalPointCount":201,"UserDataCount":0,"TotalUserDataSize":0},"Curves":[{"Target":"Parameter","Id":"PARAM_ANGLE_X","Segments":[0,30,1,0.167,30,0.333,-30,0.5,-30,1,0.667,-30,0.833,30,1,30,1,1.167,30,1.333,-30,1.5,-30,1,1.667,-30,1.833,30,2,30,1,2.056,30,2.111,30,2.167,30,1,2.267,30,2.367,0,2.467,0]},{"Target":"Parameter","Id":"PARAM_ANGLE_Y","Segments":[0,-30,1,0.078,-30,0.156,30,0.233,30,1,0.322,30,0.411,-30,0.5,-30,1,0.589,-30,0.678,30,0.767,30,1,0.844,30,0.922,-30,1,-30,1,1.078,-30,1.156,30,1.233,30,1,1.322,30,1.411,-30,1.5,-30,1,1.589,-30,1.678,30,1.767,30,1,1.844,30,1.922,-30,2,-30,1,2.056,-30,2.111,-30,2.167,-30,1,2.267,-30,2.367,0,2.467,0]},{"Target":"Parameter","Id":"PARAM_EYE__OPEN","Segments":[0,0,1,0.167,0,0.333,0,0.5,0,1,0.556,0,0.611,0.233,0.667,0.6,1,0.711,0.894,0.756,1,0.8,1,1,1.078,1,1.356,1,1.633,1,1,1.711,1,1.789,0.944,1.867,0.6,1,1.911,0.404,1.956,0,2,0,1,2.056,0,2.111,0,2.167,0,1,2.267,0,2.367,1,2.467,1]},{"Target":"Parameter","Id":"PARAM_HAIR_FRONT","Segments":[0,0,1,0.067,0,0.133,0.8,0.2,0.8,1,0.244,0.8,0.289,-0.4,0.333,-0.4,1,0.389,-0.4,0.444,-0.364,0.5,0,1,0.567,0.437,0.633,0.946,0.7,0.946,1,0.767,0.946,0.833,-0.806,0.9,-0.806,1,0.989,-0.806,1.078,0.296,1.167,0.296,1,1.256,0.296,1.344,-0.9,1.433,-0.9,1,1.511,-0.9,1.589,0.9,1.667,0.9,1,1.756,0.9,1.844,-0.821,1.933,-0.821,1,1.956,-0.821,1.978,0,2,0,1,2.056,0,2.111,0,2.167,0,1,2.267,0,2.367,0,2.467,0]},{"Target":"Parameter","Id":"PARAM_wb","Segments":[0,-15,1,0.167,-15,0.333,-30,0.5,-30,1,0.833,-30,1.167,30,1.5,30,1,1.667,30,1.833,-15,2,-15,1,2.056,-25,2.111,-30,2.167,-30,1,2.267,-30,2.367,0,2.467,0]},{"Target":"Parameter","Id":"PARAM_BREATH","Segments":[0,0,1,0.333,0,0.667,1,1,1,1,1.333,1,1.667,0,2,0,1,2.056,0,2.111,0,2.167,0,0,2.467,0]},{"Target":"Parameter","Id":"PARAM_HAIR_SIDE","Segments":[0,0.7,1,0.078,0.7,0.156,0.7,0.233,0.7,1,0.322,0.7,0.411,-0.5,0.5,-0.5,1,0.589,-0.5,0.678,-0.451,0.767,0,1,0.844,0.395,0.922,1,1,1,1,1.078,1,1.156,0.395,1.233,0,1,1.322,-0.451,1.411,-0.5,1.5,-0.5,1,1.589,-0.5,1.678,-0.404,1.767,0,1,1.844,0.353,1.922,0.7,2,0.7,1,2.056,0.7,2.111,0.7,2.167,0.7,1,2.267,0.7,2.367,0,2.467,0]},{"Target":"Parameter","Id":"PARAM_HAIR_BACK","Segments":[0,0.5,1,0.078,0.5,0.156,-0.4,0.233,-0.4,1,0.322,-0.4,0.411,1,0.5,1,1,0.589,1,0.678,-0.5,0.767,-0.5,1,0.856,-0.5,0.944,-0.451,1.033,0,1,1.111,0.395,1.189,1,1.267,1,1,1.344,1,1.422,0.619,1.5,0,1,1.589,-0.708,1.678,-1,1.767,-1,1,1.844,-1,1.922,0.5,2,0.5,1,2.056,0.5,2.111,0.5,2.167,0.5,1,2.267,0.5,2.367,0,2.467,0]}]}]]></content>
+    <url>/live2d/physics/FileReferences_Physics_0.physic3.json</url>
+    <content><![CDATA[{"Version":3,"Meta":{"PhysicsSettingCount":3,"TotalInputCount":5,"TotalOutputCount":4,"VertexCount":7,"EffectiveForces":{"Gravity":{"X":0,"Y":-1},"Wind":{"X":0,"Y":0}},"PhysicsDictionary":[{"Id":"PhysicsSetting1","Name":"1"},{"Id":"PhysicsSetting2","Name":"2"},{"Id":"PhysicsSetting3","Name":"3"}]},"PhysicsSettings":[{"Id":"PhysicsSetting1","Input":[{"Source":{"Target":"Parameter","Id":"PARAM_BREATH"},"Weight":100,"Type":"X","Reflect":false}],"Output":[{"Destination":{"Target":"Parameter","Id":"PARAM_wb"},"VertexIndex":1,"Scale":100,"Weight":100,"Type":"Angle","Reflect":false}],"Vertices":[{"Position":{"X":0,"Y":0},"Mobility":1,"Delay":1,"Acceleration":1,"Radius":0},{"Position":{"X":0,"Y":25},"Mobility":0.8,"Delay":0.95,"Acceleration":0.5,"Radius":25}],"Normalization":{"Position":{"Minimum":-10,"Default":0,"Maximum":10},"Angle":{"Minimum":-10,"Default":0,"Maximum":10}}},{"Id":"PhysicsSetting2","Input":[{"Source":{"Target":"Parameter","Id":"PARAM_ANGLE_X"},"Weight":82,"Type":"X","Reflect":false},{"Source":{"Target":"Parameter","Id":"PARAM_ANGLE_Y"},"Weight":18,"Type":"X","Reflect":false},{"Source":{"Target":"Parameter","Id":""},"Weight":100,"Type":"Angle","Reflect":false}],"Output":[{"Destination":{"Target":"Parameter","Id":"PARAM_HAIR_SIDE"},"VertexIndex":1,"Scale":2,"Weight":100,"Type":"Angle","Reflect":false},{"Destination":{"Target":"Parameter","Id":"PARAM_HAIR_BACK"},"VertexIndex":2,"Scale":2,"Weight":100,"Type":"Angle","Reflect":false}],"Vertices":[{"Position":{"X":0,"Y":0},"Mobility":1,"Delay":1,"Acceleration":1,"Radius":0},{"Position":{"X":0,"Y":12},"Mobility":0.9,"Delay":0.8,"Acceleration":1.5,"Radius":12},{"Position":{"X":0,"Y":20},"Mobility":0.7,"Delay":0.8,"Acceleration":2,"Radius":8}],"Normalization":{"Position":{"Minimum":-10,"Default":0,"Maximum":10},"Angle":{"Minimum":-10,"Default":0,"Maximum":10}}},{"Id":"PhysicsSetting3","Input":[{"Source":{"Target":"Parameter","Id":"PARAM_EYE__OPEN"},"Weight":100,"Type":"X","Reflect":false}],"Output":[{"Destination":{"Target":"Parameter","Id":"PARAM_HAIR_FRONT"},"VertexIndex":1,"Scale":1,"Weight":100,"Type":"Angle","Reflect":true}],"Vertices":[{"Position":{"X":0,"Y":0},"Mobility":1,"Delay":1,"Acceleration":1,"Radius":0},{"Position":{"X":0,"Y":5},"Mobility":0.95,"Delay":1,"Acceleration":1,"Radius":5}],"Normalization":{"Position":{"Minimum":-10,"Default":0,"Maximum":10},"Angle":{"Minimum":-10,"Default":0,"Maximum":10}}}]}]]></content>
   </entry>
   <entry>
     <title></title>
-    <url>/live2d/physics/FileReferences_Physics_0.physic3.json</url>
-    <content><![CDATA[{"Version":3,"Meta":{"PhysicsSettingCount":3,"TotalInputCount":5,"TotalOutputCount":4,"VertexCount":7,"EffectiveForces":{"Gravity":{"X":0,"Y":-1},"Wind":{"X":0,"Y":0}},"PhysicsDictionary":[{"Id":"PhysicsSetting1","Name":"1"},{"Id":"PhysicsSetting2","Name":"2"},{"Id":"PhysicsSetting3","Name":"3"}]},"PhysicsSettings":[{"Id":"PhysicsSetting1","Input":[{"Source":{"Target":"Parameter","Id":"PARAM_BREATH"},"Weight":100,"Type":"X","Reflect":false}],"Output":[{"Destination":{"Target":"Parameter","Id":"PARAM_wb"},"VertexIndex":1,"Scale":100,"Weight":100,"Type":"Angle","Reflect":false}],"Vertices":[{"Position":{"X":0,"Y":0},"Mobility":1,"Delay":1,"Acceleration":1,"Radius":0},{"Position":{"X":0,"Y":25},"Mobility":0.8,"Delay":0.95,"Acceleration":0.5,"Radius":25}],"Normalization":{"Position":{"Minimum":-10,"Default":0,"Maximum":10},"Angle":{"Minimum":-10,"Default":0,"Maximum":10}}},{"Id":"PhysicsSetting2","Input":[{"Source":{"Target":"Parameter","Id":"PARAM_ANGLE_X"},"Weight":82,"Type":"X","Reflect":false},{"Source":{"Target":"Parameter","Id":"PARAM_ANGLE_Y"},"Weight":18,"Type":"X","Reflect":false},{"Source":{"Target":"Parameter","Id":""},"Weight":100,"Type":"Angle","Reflect":false}],"Output":[{"Destination":{"Target":"Parameter","Id":"PARAM_HAIR_SIDE"},"VertexIndex":1,"Scale":2,"Weight":100,"Type":"Angle","Reflect":false},{"Destination":{"Target":"Parameter","Id":"PARAM_HAIR_BACK"},"VertexIndex":2,"Scale":2,"Weight":100,"Type":"Angle","Reflect":false}],"Vertices":[{"Position":{"X":0,"Y":0},"Mobility":1,"Delay":1,"Acceleration":1,"Radius":0},{"Position":{"X":0,"Y":12},"Mobility":0.9,"Delay":0.8,"Acceleration":1.5,"Radius":12},{"Position":{"X":0,"Y":20},"Mobility":0.7,"Delay":0.8,"Acceleration":2,"Radius":8}],"Normalization":{"Position":{"Minimum":-10,"Default":0,"Maximum":10},"Angle":{"Minimum":-10,"Default":0,"Maximum":10}}},{"Id":"PhysicsSetting3","Input":[{"Source":{"Target":"Parameter","Id":"PARAM_EYE__OPEN"},"Weight":100,"Type":"X","Reflect":false}],"Output":[{"Destination":{"Target":"Parameter","Id":"PARAM_HAIR_FRONT"},"VertexIndex":1,"Scale":1,"Weight":100,"Type":"Angle","Reflect":true}],"Vertices":[{"Position":{"X":0,"Y":0},"Mobility":1,"Delay":1,"Acceleration":1,"Radius":0},{"Position":{"X":0,"Y":5},"Mobility":0.95,"Delay":1,"Acceleration":1,"Radius":5}],"Normalization":{"Position":{"Minimum":-10,"Default":0,"Maximum":10},"Angle":{"Minimum":-10,"Default":0,"Maximum":10}}}]}]]></content>
+    <url>/talk/talk.html</url>
+    <content><![CDATA[<p>这里是我第一条说说。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/live2d/motions/tap/FileReferences_Motions_Tap_0_File_0.motion3.json</url>
+    <content><![CDATA[{"Version":3,"Meta":{"Duration":2.467,"Fps":30,"Loop":true,"AreBeziersRestricted":true,"CurveCount":8,"TotalSegmentCount":65,"TotalPointCount":201,"UserDataCount":0,"TotalUserDataSize":0},"Curves":[{"Target":"Parameter","Id":"PARAM_ANGLE_X","Segments":[0,30,1,0.167,30,0.333,-30,0.5,-30,1,0.667,-30,0.833,30,1,30,1,1.167,30,1.333,-30,1.5,-30,1,1.667,-30,1.833,30,2,30,1,2.056,30,2.111,30,2.167,30,1,2.267,30,2.367,0,2.467,0]},{"Target":"Parameter","Id":"PARAM_ANGLE_Y","Segments":[0,-30,1,0.078,-30,0.156,30,0.233,30,1,0.322,30,0.411,-30,0.5,-30,1,0.589,-30,0.678,30,0.767,30,1,0.844,30,0.922,-30,1,-30,1,1.078,-30,1.156,30,1.233,30,1,1.322,30,1.411,-30,1.5,-30,1,1.589,-30,1.678,30,1.767,30,1,1.844,30,1.922,-30,2,-30,1,2.056,-30,2.111,-30,2.167,-30,1,2.267,-30,2.367,0,2.467,0]},{"Target":"Parameter","Id":"PARAM_EYE__OPEN","Segments":[0,0,1,0.167,0,0.333,0,0.5,0,1,0.556,0,0.611,0.233,0.667,0.6,1,0.711,0.894,0.756,1,0.8,1,1,1.078,1,1.356,1,1.633,1,1,1.711,1,1.789,0.944,1.867,0.6,1,1.911,0.404,1.956,0,2,0,1,2.056,0,2.111,0,2.167,0,1,2.267,0,2.367,1,2.467,1]},{"Target":"Parameter","Id":"PARAM_HAIR_FRONT","Segments":[0,0,1,0.067,0,0.133,0.8,0.2,0.8,1,0.244,0.8,0.289,-0.4,0.333,-0.4,1,0.389,-0.4,0.444,-0.364,0.5,0,1,0.567,0.437,0.633,0.946,0.7,0.946,1,0.767,0.946,0.833,-0.806,0.9,-0.806,1,0.989,-0.806,1.078,0.296,1.167,0.296,1,1.256,0.296,1.344,-0.9,1.433,-0.9,1,1.511,-0.9,1.589,0.9,1.667,0.9,1,1.756,0.9,1.844,-0.821,1.933,-0.821,1,1.956,-0.821,1.978,0,2,0,1,2.056,0,2.111,0,2.167,0,1,2.267,0,2.367,0,2.467,0]},{"Target":"Parameter","Id":"PARAM_wb","Segments":[0,-15,1,0.167,-15,0.333,-30,0.5,-30,1,0.833,-30,1.167,30,1.5,30,1,1.667,30,1.833,-15,2,-15,1,2.056,-25,2.111,-30,2.167,-30,1,2.267,-30,2.367,0,2.467,0]},{"Target":"Parameter","Id":"PARAM_BREATH","Segments":[0,0,1,0.333,0,0.667,1,1,1,1,1.333,1,1.667,0,2,0,1,2.056,0,2.111,0,2.167,0,0,2.467,0]},{"Target":"Parameter","Id":"PARAM_HAIR_SIDE","Segments":[0,0.7,1,0.078,0.7,0.156,0.7,0.233,0.7,1,0.322,0.7,0.411,-0.5,0.5,-0.5,1,0.589,-0.5,0.678,-0.451,0.767,0,1,0.844,0.395,0.922,1,1,1,1,1.078,1,1.156,0.395,1.233,0,1,1.322,-0.451,1.411,-0.5,1.5,-0.5,1,1.589,-0.5,1.678,-0.404,1.767,0,1,1.844,0.353,1.922,0.7,2,0.7,1,2.056,0.7,2.111,0.7,2.167,0.7,1,2.267,0.7,2.367,0,2.467,0]},{"Target":"Parameter","Id":"PARAM_HAIR_BACK","Segments":[0,0.5,1,0.078,0.5,0.156,-0.4,0.233,-0.4,1,0.322,-0.4,0.411,1,0.5,1,1,0.589,1,0.678,-0.5,0.767,-0.5,1,0.856,-0.5,0.944,-0.451,1.033,0,1,1.111,0.395,1.189,1,1.267,1,1,1.344,1,1.422,0.619,1.5,0,1,1.589,-0.708,1.678,-1,1.767,-1,1,1.844,-1,1.922,0.5,2,0.5,1,2.056,0.5,2.111,0.5,2.167,0.5,1,2.267,0.5,2.367,0,2.467,0]}]}]]></content>
   </entry>
 </search>
