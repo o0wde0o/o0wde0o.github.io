@@ -3,8 +3,104 @@
   <entry>
     <title></title>
     <url>/2025/09/13/ESP8266/</url>
-    <content><![CDATA[<p><img src="/../images/data/gpio-ESP8266" alt="image-20250913070411014"></p>
+    <content><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/o0wde0o/blog-image@main/data/gpio-ESP8266.png" alt="image-20250913070411014"></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Astra Pro 使用</title>
+    <url>/2025/08/15/Astra%20Pro%20%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<hr>
+<h1 id="Linux-下-Astra-SDK-安装与示例使用教程"><a href="#Linux-下-Astra-SDK-安装与示例使用教程" class="headerlink" title="Linux 下 Astra SDK 安装与示例使用教程"></a>Linux 下 Astra SDK 安装与示例使用教程</h1><p>本文以 <strong>树莓派 &#x2F; Linux</strong> 系统为例，详细介绍 Astra SDK 2.1.3 的安装、环境配置、示例编译与运行。</p>
+<hr>
+<h2 id="1-下载-SDK"><a href="#1-下载-SDK" class="headerlink" title="1. 下载 SDK"></a>1. 下载 SDK</h2><ol>
+<li><p>根据你的系统环境，从 Orbbec 官方开发者网站下载对应的 SDK 源码包：</p>
+<p><a href="https://developer.orbbec.com.cn/download.html?id=53">Astra SDK 下载页面</a></p>
+</li>
+<li><p>将下载的 <code>.tar.gz</code> 包复制到开发环境的用户家目录下，例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">~/Downloads</span><br></pre></td></tr></table></figure></li>
+</ol>
+<hr>
+<h2 id="2-解压-SDK"><a href="#2-解压-SDK" class="headerlink" title="2. 解压 SDK"></a>2. 解压 SDK</h2><ol>
+<li><p>创建 SDK 安装目录：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/AstraSDK</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解压 SDK 包到安装目录：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar xf AstraSDK-v*.tar.gz -C ./AstraSDK --strip-components=1</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上面的 <code>*</code> 为通配符，可以直接替换为你的文件名完整路径。</p>
+</blockquote>
+</li>
+<li><p>进入 SDK 目录，给安装脚本加上执行权限：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/AstraSDK</span><br><span class="line"><span class="built_in">chmod</span> a+x install/install.sh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行安装脚本：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./install/install.sh</span><br></pre></td></tr></table></figure>
+
+<p>安装过程中，会自动配置 <strong>udev rules</strong>，确保 Orbbec 设备能够在 Linux 下被访问。</p>
+</li>
+</ol>
+<hr>
+<h2 id="3-设置环境变量"><a href="#3-设置环境变量" class="headerlink" title="3. 设置环境变量"></a>3. 设置环境变量</h2><p>执行以下命令将 SDK 的 include 和 lib 路径写入 <code>.bashrc</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> <span class="string">&quot;export ASTRA_SDK_INCLUDE=<span class="variable">$HOME</span>/AstraSDK/include&quot;</span> &gt;&gt; ~/.bashrc</span><br><span class="line"><span class="built_in">cat</span> <span class="string">&quot;export ASTRA_SDK_LIB=<span class="variable">$HOME</span>/AstraSDK/lib&quot;</span> &gt;&gt; ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<p>使环境变量立即生效，或者关闭当前终端，重新打开一个新的终端即可。</p>
+<p>验证：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> ~/.bashrc | <span class="built_in">tail</span> -n2</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="4-安装依赖"><a href="#4-安装依赖" class="headerlink" title="4. 安装依赖"></a>4. 安装依赖</h2><p>SDK 示例程序依赖 <strong>SFML</strong> 和标准开发工具，执行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install build-essential libsfml-dev</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果编译过程中提示缺少其他依赖，可根据提示安装。</p>
+</blockquote>
+<hr>
+<h2 id="5-编译-SDK-示例"><a href="#5-编译-SDK-示例" class="headerlink" title="5. 编译 SDK 示例"></a>5. 编译 SDK 示例</h2><ol>
+<li><p>创建编译目录：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p ~/AstraSDK/samples/build</span><br><span class="line"><span class="built_in">cd</span> ~/AstraSDK/samples/build</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建 <code>tools</code> 目录（避免 cmake 报错）：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/AstraSDK/samples/tools</span><br><span class="line"><span class="built_in">touch</span> ~/AstraSDK/samples/CMakeLists.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行 CMake 配置：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cmake .. -DASTRA_UNIX=TRUE</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编译示例程序（使用多线程加速）：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">make -j$(<span class="built_in">nproc</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>检查编译结果：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> bin</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>bin</code> 目录下会生成各个示例可执行文件，例如：<ul>
+<li><code>SimpleColorViewer-SFML</code>：查看 RGB 画面</li>
+<li><code>SimpleDepthViewer-SFML</code>：查看深度画面</li>
+<li><code>SimpleStreamViewer-SFML</code>：同时查看多画面</li>
+<li><code>SimpleBodyViewer-SFML</code>：查看人体骨架识别画面</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="6-运行示例程序"><a href="#6-运行示例程序" class="headerlink" title="6. 运行示例程序"></a>6. 运行示例程序</h2><ol>
+<li><p>进入示例可执行文件目录：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/AstraSDK/samples/build/bin</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行示例程序：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">astra.log</span><br><span class="line">SDK 运行时生成的日志文件，会记录相机初始化、数据流状态、错误等信息。</span><br><span class="line">用于调试和查看设备连接情况。</span><br><span class="line"></span><br><span class="line">profile_openni_sensor.txt</span><br><span class="line">profile_orbbec_body_tracking.txt</span><br><span class="line">profile_orbbec_xs.txt</span><br><span class="line">SDK 示例或设备插件的配置文件，主要用来记录传感器配置、插件参数等。</span><br><span class="line">比如 profile_orbbec_body_tracking.txt 里可能有骨架追踪的相关参数。</span><br><span class="line"></span><br><span class="line">人体骨架相关：</span><br><span class="line">SimpleBodyViewer-SFML</span><br><span class="line">显示人体骨架识别的窗口程序。</span><br><span class="line">使用 SFML 库渲染骨架，可实时看到人体关键点。</span><br><span class="line">RotatedBodyViewer-SFML</span><br><span class="line">类似 SimpleBodyViewer，但支持旋转视角显示骨架数据。</span><br><span class="line">ColorizedBodyViewer-SFML</span><br><span class="line">骨架图像加上颜色信息显示（彩色骨架显示）。</span><br><span class="line">MaskedColorViewer-SFML</span><br><span class="line">显示彩色图像并对人体进行遮罩（即只显示人体区域的彩色图像）。</span><br><span class="line"></span><br><span class="line">彩色/深度/流处理：</span><br><span class="line">SimpleColorViewer-SFML</span><br><span class="line">显示相机彩色图像（RGB）。</span><br><span class="line">SimpleDepthViewer-SFML</span><br><span class="line">显示深度图像（Depth）窗口。</span><br><span class="line">SimpleStreamViewer-SFML</span><br><span class="line">同时显示彩色和深度数据流的窗口程序。</span><br><span class="line"></span><br><span class="line">传感器事件/轮询示例：</span><br><span class="line">BodyReaderPoll</span><br><span class="line">DepthReaderPoll</span><br><span class="line">ColorReaderPoll</span><br><span class="line">InfraredReaderPoll</span><br><span class="line">“Poll” 后缀表示轮询方式读取相机数据。</span><br><span class="line">程序会不断查询最新帧，然后处理或显示。</span><br><span class="line"></span><br><span class="line">DepthReaderEvent</span><br><span class="line">ColorReaderEvent</span><br><span class="line">ColorReaderEventCPP</span><br><span class="line">InfraredReaderEvent</span><br><span class="line">DepthReaderEventCPP</span><br><span class="line">“Event” 后缀表示事件驱动方式读取数据。</span><br><span class="line">相机产生新帧时触发事件回调，提高效率，适合复杂应用。</span><br><span class="line"></span><br><span class="line">MultiSensorViewer-SFML</span><br><span class="line"></span><br><span class="line">演示如何同时使用多个传感器流（彩色 + 深度 + 红外等）并显示。</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>记录</category>
+      </categories>
+      <tags>
+        <tag>姑且算是教程吧</tag>
+        <tag>树莓派</tag>
+        <tag>C++</tag>
+        <tag>Linux</tag>
+      </tags>
   </entry>
   <entry>
     <title>Hello World</title>
@@ -604,6 +700,29 @@
       </tags>
   </entry>
   <entry>
+    <title>字符识别演示Demo</title>
+    <url>/2025/07/15/%E5%AD%97%E7%AC%A6%E8%AF%86%E5%88%AB%E6%BC%94%E7%A4%BADemo/</url>
+    <content><![CDATA[<div style="display: flex; justify-content: center;">
+  <iframe 
+    src="/custom-pages/character.html" 
+    width="90%" 
+    style="max-width: 960px; height: 1200px; opacity: 0.7;"
+  ></iframe>
+
+</div>
+
+<p>你说准确率不够？去<a href="https://o0wde0o.github.io/2025/06/24/%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/">手写数字识别</a>看看！</p>
+]]></content>
+      <categories>
+        <category>HTML交互页面</category>
+      </categories>
+      <tags>
+        <tag>ONNX</tag>
+        <tag>神经网络</tag>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>图书管理软件设计</title>
     <url>/2025/06/27/%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E8%BD%AF%E4%BB%B6/</url>
     <content><![CDATA[<p><strong>题目：《图书管理软件设计报告》</strong></p>
@@ -643,29 +762,6 @@
       </categories>
       <tags>
         <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>字符识别演示Demo</title>
-    <url>/2025/07/15/%E5%AD%97%E7%AC%A6%E8%AF%86%E5%88%AB%E6%BC%94%E7%A4%BADemo/</url>
-    <content><![CDATA[<div style="display: flex; justify-content: center;">
-  <iframe 
-    src="/custom-pages/character.html" 
-    width="90%" 
-    style="max-width: 960px; height: 1200px; opacity: 0.7;"
-  ></iframe>
-
-</div>
-
-<p>你说准确率不够？去<a href="https://o0wde0o.github.io/2025/06/24/%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/">手写数字识别</a>看看！</p>
-]]></content>
-      <categories>
-        <category>HTML交互页面</category>
-      </categories>
-      <tags>
-        <tag>ONNX</tag>
-        <tag>神经网络</tag>
-        <tag>机器学习</tag>
       </tags>
   </entry>
   <entry>
@@ -922,114 +1018,64 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/2025/09/21/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8octoprint/</url>
-    <content><![CDATA[<hr>
-<p>title: 树莓派使用 OctoPrint<br>date: 2025-09-20<br>categories: </p>
-<ul>
-<li>记录<br>tags: </li>
-<li>OctoPrint</li>
-<li>3D打印</li>
-<li>树莓派</li>
-</ul>
-<hr>
-<h1 id="树莓派-OctoPi-OctoPrint-记录"><a href="#树莓派-OctoPi-OctoPrint-记录" class="headerlink" title="树莓派 OctoPi + OctoPrint 记录"></a>树莓派 OctoPi + OctoPrint 记录</h1><p>最近买了一台3D打印机，但是实验室离宿舍有一段距离，而且时开时不开，于是准备做一个上位机远程控制，同时观察打印效果：</p>
-<h2 id="1-主流控件与软件"><a href="#1-主流控件与软件" class="headerlink" title="1. 主流控件与软件"></a>1. 主流控件与软件</h2><ul>
-<li><strong>OctoPrint</strong><ul>
-<li>3D 打印机管理平台，网页控制打印机。</li>
-<li>官网: <a href="https://octoprint.org/">https://octoprint.org/</a></li>
-</ul>
-</li>
-<li><strong>Klipper</strong><ul>
-<li>高性能 3D 打印固件，支持多种主板。</li>
-<li>官网: <a href="https://www.klipper3d.org/">https://www.klipper3d.org/</a></li>
-</ul>
-</li>
-<li><strong>Moonraker &amp; MainsailOS</strong><ul>
-<li>Klipper API 与网页前端管理界面。</li>
-<li>Moonraker: <a href="https://moonraker.readthedocs.io/">https://moonraker.readthedocs.io/</a></li>
-<li>MainsailOS: <a href="https://docs.mainsail.xyz/">https://docs.mainsail.xyz/</a></li>
-</ul>
-</li>
-</ul>
-<p>查完之后发现响尾蛇X1是马林固件，上位机octopi和klipper都能使用，安卓手机或树莓派，旧电脑是主流刷写设备。OctoPrint最简单，不用刷下位机，也有远程控制工具，决定拿树莓派先试一下。</p>
-<h2 id="2-安装-OctoPrint（OctoPi-镜像）"><a href="#2-安装-OctoPrint（OctoPi-镜像）" class="headerlink" title="2. 安装 OctoPrint（OctoPi 镜像）"></a>2. 安装 OctoPrint（OctoPi 镜像）</h2><ul>
-<li><p>下载 OctoPi 镜像：</p>
-<ul>
-<li>OctoPi 官网: <a href="https://octoprint.org/download/">https://octoprint.org/download/</a></li>
-</ul>
-</li>
-<li><p>校验镜像 SHA256</p>
-</li>
-<li><p>插入树莓派，启动 OctoPi。</p>
-<blockquote>
-<p>OctoPi和普通raspberryPi使用流程类似，默认为无桌面版。</p>
-</blockquote>
-</li>
-</ul>
-<hr>
-<hr>
-<h2 id="3-配置-Wi-Fi"><a href="#3-配置-Wi-Fi" class="headerlink" title="3. 配置 Wi-Fi"></a>3. 配置 Wi-Fi</h2><ul>
-<li>编辑 <code>octopi-wpa-supplicant.txt</code> 文件：</li>
-</ul>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev</span><br><span class="line">update_config=1</span><br><span class="line">country=CN</span><br><span class="line"></span><br><span class="line">network=&#123;</span><br><span class="line">    ssid=&quot;你的SSID&quot;</span><br><span class="line">    psk=&quot;你的密码&quot;</span><br><span class="line">    key_mgmt=WPA-PSK</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上面是官方文档的内容【0&#x2F;15版本后），GPT也这样说。</p>
-<ul>
-<li><p>反正我没找到这个文件，root下面有一个octopi-network.txt，里面写：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Using this file to configure your network connection is no longer supported.</span><br><span class="line">#</span><br><span class="line"># Please use wifi.nmconnection instead.</span><br></pre></td></tr></table></figure>
+    <title>随笔</title>
+    <url>/2025/09/22/%E9%9A%8F%E7%AC%94/</url>
+    <content><![CDATA[<p>不知道是什么啊，看到就记录下来了：）</p>
+<p>C++ 中的 struct 对 C 中的 struct 进行了扩充，它已经不再只是一个包含不同数据类型的数据结构了，它已经获取了太多的功能。</p>
+<p>struct 能包含成员函数吗？ 能！</p>
+<p>struct 能继承吗？ 能！！</p>
+<p>struct 能实现多态吗？ 能！！！</p>
+<p>既然这些它都能实现，那它和 class 还能有什么区别？</p>
+<p>最本质的一个区别就是默认的访问控制，体现在两个方面：</p>
+<p>1）默认的继承访问权限。struct是public的，class是private的。</p>
+<p>你可以写如下的代码：</p>
+<p>struct A<br>{<br>    char a;<br>};<br>struct B : A<br>{<br>    char b;<br>};<br>这个时候 B 是 public 继承 A 的。</p>
+<p>如果都将上面的 struct 改成 class，那么 B 是 private 继承 A 的。这就是默认的继承访问权限。</p>
+<p>所以我们在平时写类继承的时候，通常会这样写：</p>
+<p>struct B : public A<br>就是为了指明是 public 继承，而不是用默认的 private 继承。</p>
+<p>当然，到底默认是 public 继承还是 private 继承，取决于子类而不是基类。</p>
+<p>我的意思是，struct 可以继承 class，同样 class 也可以继承 struct，那么默认的继承访问权限是看子类到底是用的 struct 还是 class。如下：</p>
+<p>struct A{};<br>class B : A{}; &#x2F;&#x2F;private继承<br>struct C : B{}; &#x2F;&#x2F;public继承<br>2）struct 作为数据结构的实现体，它默认的数据访问控制是 public 的，而 class 作为对象的实现体，它默认的成员变量访问控制是 private 的。</p>
+<p>注意我上面的用词，我依旧强调 struct 是一种数据结构的实现体，虽然它是可以像 class 一样的用。我依旧将 struct 里的变量叫数据，class 内的变量叫成员，虽然它们并无区别。</p>
+<p>其实，到底是用 struct 还是 class，完全看个人的喜好，你可以将你程序里所有的 class 全部替换成 struct，它依旧可以很正常的运行。但我给出的最好建议，还是：当你觉得你要做的更像是一种数据结构的话，那么用 struct，如果你要做的更像是一种对象的话，那么用 class。</p>
+<p>当然，我在这里还要强调一点的就是，对于访问控制，应该在程序里明确的指出，而不是依靠默认，这是一个良好的习惯，也让你的代码更具可读性。</p>
+<p>说到这里，很多了解的人或许都认为这个话题可以结束了，因为他们知道 struct 和 class 的“唯一”区别就是访问控制。很多文献上也确实只提到这一个区别。</p>
+<p>但我上面却没有用“唯一”，而是说的“最本质”，那是因为，它们确实还有另一个区别，虽然那个区别我们平时可能很少涉及。那就是：“class” 这个关键字还用于定义模板参数，就像 “typename”。但关键字 “struct” 不用于定义模板参数。这一点在 Stanley B.Lippman 写的 Inside the C++ Object Model 有过说明。</p>
+<p>问题讨论到这里，基本上应该可以结束了。但有人曾说过，他还发现过其他的“区别”，那么，让我们来看看，这到底是不是又一个区别。还是上面所说的，C++ 中的 struct 是对 C 中的 struct 的扩充，既然是扩充，那么它就要兼容过去 C 中 struct 应有的所有特性。例如你可以这样写：</p>
+<p>struct A &#x2F;&#x2F;定义一个struct<br>{<br>    char c1;<br>    int n2;<br>    double db3;<br>};<br>A a&#x3D;{‘p’,7,3.1415926}; &#x2F;&#x2F;定义时直接赋值<br>也就是说 struct 可以在定义的时候用 {} 赋初值。那么问题来了，class 行不行呢？将上面的 struct 改成 class，试试看。报错！噢~于是那人跳出来说，他又找到了一个区别。我们仔细看看，这真的又是一个区别吗？</p>
+<p>你试着向上面的 struct 中加入一个构造函数（或虚函数），你会发现什么？</p>
+<p>对，struct 也不能用 {} 赋初值了。</p>
+<p>的确，以 {} 的方式来赋初值，只是用一个初始化列表来对数据进行按顺序的初始化，如上面如果写成 A a&#x3D;{‘p’,7}; 则 c1,n2 被初始化，而 db3 没有。这样简单的 copy 操作，只能发生在简单的数据结构上，而不应该放在对象上。加入一个构造函数或是一个虚函数会使 struct 更体现出一种对象的特性，而使此{}操作不再有效。</p>
+<p>事实上，是因为加入这样的函数，使得类的内部结构发生了变化。而加入一个普通的成员函数呢？你会发现{}依旧可用。其实你可以将普通的函数理解成对数据结构的一种算法，这并不打破它数据结构的特性。</p>
+<p>那么，看到这里，我们发现即使是 struct 想用 {} 来赋初值，它也必须满足很多的约束条件，这些条件实际上就是让 struct 更体现出一种数据机构而不是类的特性。</p>
+<p>那为什么我们在上面仅仅将 struct 改成 class，{} 就不能用了呢？</p>
+<p>其实问题恰巧是我们之前所讲的——访问控制！你看看，我们忘记了什么？对，将 struct 改成 class 的时候，访问控制由 public 变为 private 了，那当然就不能用 {} 来赋初值了。加上一个 public，你会发现，class 也是能用 {} 的，和 struct 毫无区别！！！</p>
+<p>做个总结，从上面的区别，我们可以看出，struct 更适合看成是一个数据结构的实现体，class 更适合看成是一个对象的实现体。</p>
+<p>在类的外面，其实也可以用指针访问类内部的私有成员，例如：</p>
+<p>#include <iostream><br>using namespace std;</p>
+<p>class a    &#x2F;&#x2F; 定义了类a<br>{<br>    long a0;   &#x2F;&#x2F; 定义私有成员 a0<br>    public:<br>    a(long b)<br>    {<br>        a0&#x3D;b;<br>    }<br>    void geta()<br>    {<br>        cout&lt;&lt;a0&lt;&lt;endl;<br>    }<br>};<br>int main()<br>{<br>    a b(5);          &#x2F;&#x2F; 定义对象b，并给 b 中的 a0 赋初值<br>    long <em>p;<br>    p&#x3D;(long</em>)&b;     &#x2F;&#x2F; 令指针 p 指向 b 中前 4 个字节，在这里相当于指向 a0<br>    b.geta();        &#x2F;&#x2F; 用内部函数访问 a0<br>    cout&lt;&lt;*p&lt;&lt;endl;  &#x2F;&#x2F; 在外部直接访问 a0<br>    *p&#x3D;8;            &#x2F;&#x2F; 在外部改变 a0 的值<br>    b.geta();        &#x2F;&#x2F; 输出改变后的结果<br>    cout&lt;&lt;*p&lt;&lt;endl;<br>    return 0;<br>}<br>需要注意的是，使用这种方法虽然可以用于基于类的多态原则的一些程序开发，但违反了类的封装原则，在使用指针的类中也极不安全，所以不建议使用。</p>
+<p>#include <iostream><br>using namespace std;</p>
+<p>class Box{<br>    public:<br>        Box(){;}<br>        ~Box(){;}<br>        Box* get_address()   &#x2F;&#x2F;得到this的地址<br>        {<br>            return this;<br>        }<br>};</p>
+<p>int main(){</p>
+<pre><code>Box box1;
+Box box2;
+// Box* 定义指针p接受对象box的get_address()成员函数的返回值，并打印
 
-<p>那又去找 wifi.nmconnection ，果然有：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[connection]</span><br><span class="line">id=wifi</span><br><span class="line">uuid=593819b8-135a-4a3e-9611-c36cdeadbeef</span><br><span class="line">type=wifi</span><br><span class="line">interface-name=wlan0</span><br><span class="line"></span><br><span class="line">[wifi]</span><br><span class="line">mode=infrastructure</span><br><span class="line">ssid=这里写热点</span><br><span class="line"></span><br><span class="line">[wifi-security]</span><br><span class="line">auth-alg=open</span><br><span class="line">key-mgmt=wpa-psk</span><br><span class="line">psk=这里写密码</span><br><span class="line"></span><br><span class="line">[ipv4]</span><br><span class="line">method=auto</span><br><span class="line"></span><br><span class="line">[ipv6]</span><br><span class="line">addr-gen-mode=default</span><br><span class="line">method=auto</span><br><span class="line"></span><br><span class="line">[proxy]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+Box* p = box1.get_address();  
+cout &lt;&lt; p &lt;&lt; endl;
 
-<p>配置好之后记得取消注释</p>
-</li>
-<li><p>重启树莓派，OctoPi 连接 Wi-Fi：</p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ifconfig wlan0</span><br><span class="line">ping 192.168.43.1  <span class="comment">#这是我的，你填你的</span></span><br></pre></td></tr></table></figure>
-<p>然后就能用了，电脑打开192.168.43.1跟着octopi完成打印配置即可。</p>
-<hr>
-<h2 id="4-发现校园网认证限制"><a href="#4-发现校园网认证限制" class="headerlink" title="4. 发现校园网认证限制"></a>4. 发现校园网认证限制</h2><ul>
-<li>实验室肯定不能再用手机热点，校园网需要网页认证，无法直接联网访问 OctoPrint。</li>
-<li>决定安装 <strong>树莓派桌面环境</strong> 和 <strong>浏览器</strong>。</li>
-</ul>
-<hr>
-<h2 id="5-安装桌面和浏览器"><a href="#5-安装桌面和浏览器" class="headerlink" title="5. 安装桌面和浏览器"></a>5. 安装桌面和浏览器</h2><p>安装桌面octopi提供了一条命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">this image comes without a desktop enuironment installed because it&#x27;s not required for running OctoPrint. If you want a desktop enuironment you can install it uia </span><br><span class="line">sudo /opt/octopi/scripts/install-desktop</span><br></pre></td></tr></table></figure>
+p = box2.get_address();
+cout &lt;&lt; p &lt;&lt; endl; 
 
-<p>一次竟然成功了：）</p>
-<p><img src="/../images/cat/octopi-desktop.png"></p>
-<p>重启之后在桌面环境打开vnc</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt upgrade -y</span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> apt install chromium-browser -y       <span class="comment"># 安装 Chromium 浏览器</span></span><br><span class="line"><span class="built_in">sudo</span> apt install firefox-esr -y            <span class="comment"># 可选安装 Firefox，之后如果要tailscale穿透的话国内还是火狐方便一点</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>启动桌面后使用浏览器访问校园网认证页面：</li>
-</ul>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">http://[校园网认证页面] #不多赘述</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="6-使用-OctoPrint"><a href="#6-使用-OctoPrint" class="headerlink" title="6. 使用 OctoPrint"></a>6. 使用 OctoPrint</h2><ul>
-<li>浏览器访问本地 OctoPrint：</li>
-</ul>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">http://192.168.43.80/#control</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>完成打印机连接、控制和状态监控。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>准备先试一下OctoPrint自带插件，不行的话tailscale也挺方便，就是不能和clash兼容。</p>
-<p>发现插件仓库里有<a href="https://plugins.octoprint.org/plugins/octoeverywhere/">OctoEverywhere - Free Remote Access, AI Failure Detection, And More!</a></p>
-<p>插件仓库显示不可用，但是提供了URL和pip的方法，多试几次成功安装。</p>
-<p>不知道是校园网还是什么问题，响应很慢</p>
-<p>想要用octoprint远程访问我的打印机，都连手机热点的话，<a href="http://192.168.43.80/%E6%9C%AC%E5%9C%B0%E8%AE%BF%E9%97%AE%E6%B2%A1%E9%97%AE%E9%A2%98%EF%BC%8C">http://192.168.43.80/本地访问没问题，</a><br><img src="/../images/data/037e9b2c89d41a0dc79c2b1d759c31bf.png" alt="img"><br>，尝试远程连接电脑换学校wifi，树莓派依旧连热点也可以<br><img src="/../images/data/30bd7c6af87ed05b363075ecc817e53d.png" alt="img"><br>，之后树莓派换wifi就失败了<br><img src="/../images/data/10401fbac2dd4dda343aa7c65012f0d1.png" alt="img"></p>
-<p>所以最终解决方案还是tailscale  <a href="https://tailscale.com/kb">文档 · Tailscale 文档 — Docs · Tailscale Docs</a></p>
-<p>这样似乎没法用AI监控打印质量，也许将来截取视频流再做检测。</p>
-<blockquote>
-<p>windows安装tailscale可能报错“出现严重错误”，考虑使用clash的缘故，虚拟机也安装失败（<a href="https://tailscale.com/kb/1105/other-vpns">我可以将 Tailscale 与其他 VPN 一起使用吗？· Tailscale 文档 — Can I use Tailscale alongside other VPNs? · Tailscale Docs</a>）没有太好的解决方案：（</p>
-</blockquote>
-<p>打开了一个services.msc 的 iphlpsvc ，改为自动，不知道是否有其他风险。</p>
+return 0;
+</code></pre>
+<p>}<br>this 指针的类型可理解为 Box*。</p>
+<p>此时得到两个地址分别为 box1 和 box2 对象的地址。</p>
+<p>深夜，红色方块砌成的古怪建筑发出卡哒卡哒的物体碰撞声，先是一只手，然后是一整只手臂，最后是一颗前额饱满但有些秃顶的脑袋探了出来，与一旁的列宁半身像神似。列宁手脚并用地爬下了透明的棺材似的盒子，他似乎手脚不是很利索，习惯性地用手捂着心口。“哦，我得快些去见约瑟夫同志”，他小声念叨着偷偷摸摸地溜出了这座陵墓般的怪异的红色建筑。<br>很快，他走到了一旁的摆放着斯大林半身像的坟墓前。“嘿，约瑟夫，你在吗？我有些事想和你说！”列宁边说边敲了敲斯大林的墓碑，许久都没有回应。列宁右手撑着腰似乎有些不耐烦了，于是敲得更重了些，“嘿，同志，约瑟夫同志，我必须要和你谈谈！”说着他用力地把坟墓的顶盖推开了，这时只听见嘎吱一声，里面棺材被一下子推开了，一只宽大的手伴随着浑厚但却像是刚睡醒的嗓音从里面传了出来“哦，是伊里奇，有什么事儿吗？”<br>“我做了一个梦，我知道这是梦，梦不是现实对吧？我是说，我做了一个糟糕的梦？”<br>“你梦见什么了，伊里奇同志？”<br>“苏维埃不见了，我是说在梦里。它消失了，我梦见军阀和买办又控制了我们的祖国，我看见无产者被他们踩在脚下。我看见…”<br>“好了，我亲爱的伊里奇同志。这，显然是不可能的，赫鲁晓夫会做得很好的，这只是梦，你懂吗？这只是个梦，你现在需要做的就是回去躺下，休息。”<br>“约瑟夫，那边的旗帜上印的不是锤子和镰刀，甚至不是红色的背景！”<br>“……”<br>赫鲁晓夫站在他的半身像前，有些局促不安。他的面前站着斯大林和列宁。<br>“这是怎么回事，同志？”斯大林问道，哪怕在晚上也能看出来他的脸色很阴沉。<br>“我不道啊？”<br>列宁在一旁，仰着头，手又习惯性地撑着后腰。他伸手拉住斯大林和赫鲁晓夫，说到“哦，我明白了，我完全明白了，斯大林同志，恐怕，我们又得开始工作了。”</p>
 ]]></content>
+      <categories>
+        <category>记录</category>
+      </categories>
   </entry>
   <entry>
     <title>宠物喂食器</title>
@@ -1061,7 +1107,7 @@
 <h2 id="关于GPIO"><a href="#关于GPIO" class="headerlink" title="关于GPIO"></a>关于GPIO</h2><p>wiringpi已经停止更新</p>
 <p>gpiozero和RPi.GPIO也可以使用</p>
 <p>python随便写一写好了</p>
-<p><img src="/../images/data/gpio-pi" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/o0wde0o/blog-image@main/data/gpio-pi.png" alt="img"></p>
 <h2 id="以下是宠物喂食器的记录："><a href="#以下是宠物喂食器的记录：" class="headerlink" title="以下是宠物喂食器的记录："></a>以下是宠物喂食器的记录：</h2><h1 id="宠物喂食器项目方案（树莓派-Flask-Ngrok-GPIO）"><a href="#宠物喂食器项目方案（树莓派-Flask-Ngrok-GPIO）" class="headerlink" title="宠物喂食器项目方案（树莓派 + Flask + Ngrok + GPIO）"></a>宠物喂食器项目方案（树莓派 + Flask + Ngrok + GPIO）</h1><h2 id="1-项目概述"><a href="#1-项目概述" class="headerlink" title="1. 项目概述"></a>1. 项目概述</h2><p>本项目目标是在树莓派上实现一个宠物喂食器，可通过手机网页控制喂食时间、次数、分量（全份或半份）以及临时投喂。<br>每次喂食操作将调用控制步进电机的 GPIO 脚本。</p>
 <p><strong>参考模型</strong> : <a href="https://github.com/mdenisov/feeder/tree/main">mdenisov&#x2F;feeder：宠物喂食器 — mdenisov&#x2F;feeder: Pet feeder</a></p>
 <p>功能包括：</p>
@@ -1242,9 +1288,9 @@
         <category>记录</category>
       </categories>
       <tags>
-        <tag>python</tag>
-        <tag>树莓派配置</tag>
+        <tag>姑且算是教程吧</tag>
         <tag>树莓派</tag>
+        <tag>python</tag>
         <tag>HTML</tag>
         <tag>ngork</tag>
         <tag>tailscale</tag>
@@ -1267,61 +1313,113 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/2025/09/22/%E9%9A%8F%E7%AC%94/</url>
-    <content><![CDATA[<p>不知道是什么啊，看到就记录下来了：）</p>
-<p>C++ 中的 struct 对 C 中的 struct 进行了扩充，它已经不再只是一个包含不同数据类型的数据结构了，它已经获取了太多的功能。</p>
-<p>struct 能包含成员函数吗？ 能！</p>
-<p>struct 能继承吗？ 能！！</p>
-<p>struct 能实现多态吗？ 能！！！</p>
-<p>既然这些它都能实现，那它和 class 还能有什么区别？</p>
-<p>最本质的一个区别就是默认的访问控制，体现在两个方面：</p>
-<p>1）默认的继承访问权限。struct是public的，class是private的。</p>
-<p>你可以写如下的代码：</p>
-<p>struct A<br>{<br>    char a;<br>};<br>struct B : A<br>{<br>    char b;<br>};<br>这个时候 B 是 public 继承 A 的。</p>
-<p>如果都将上面的 struct 改成 class，那么 B 是 private 继承 A 的。这就是默认的继承访问权限。</p>
-<p>所以我们在平时写类继承的时候，通常会这样写：</p>
-<p>struct B : public A<br>就是为了指明是 public 继承，而不是用默认的 private 继承。</p>
-<p>当然，到底默认是 public 继承还是 private 继承，取决于子类而不是基类。</p>
-<p>我的意思是，struct 可以继承 class，同样 class 也可以继承 struct，那么默认的继承访问权限是看子类到底是用的 struct 还是 class。如下：</p>
-<p>struct A{};<br>class B : A{}; &#x2F;&#x2F;private继承<br>struct C : B{}; &#x2F;&#x2F;public继承<br>2）struct 作为数据结构的实现体，它默认的数据访问控制是 public 的，而 class 作为对象的实现体，它默认的成员变量访问控制是 private 的。</p>
-<p>注意我上面的用词，我依旧强调 struct 是一种数据结构的实现体，虽然它是可以像 class 一样的用。我依旧将 struct 里的变量叫数据，class 内的变量叫成员，虽然它们并无区别。</p>
-<p>其实，到底是用 struct 还是 class，完全看个人的喜好，你可以将你程序里所有的 class 全部替换成 struct，它依旧可以很正常的运行。但我给出的最好建议，还是：当你觉得你要做的更像是一种数据结构的话，那么用 struct，如果你要做的更像是一种对象的话，那么用 class。</p>
-<p>当然，我在这里还要强调一点的就是，对于访问控制，应该在程序里明确的指出，而不是依靠默认，这是一个良好的习惯，也让你的代码更具可读性。</p>
-<p>说到这里，很多了解的人或许都认为这个话题可以结束了，因为他们知道 struct 和 class 的“唯一”区别就是访问控制。很多文献上也确实只提到这一个区别。</p>
-<p>但我上面却没有用“唯一”，而是说的“最本质”，那是因为，它们确实还有另一个区别，虽然那个区别我们平时可能很少涉及。那就是：“class” 这个关键字还用于定义模板参数，就像 “typename”。但关键字 “struct” 不用于定义模板参数。这一点在 Stanley B.Lippman 写的 Inside the C++ Object Model 有过说明。</p>
-<p>问题讨论到这里，基本上应该可以结束了。但有人曾说过，他还发现过其他的“区别”，那么，让我们来看看，这到底是不是又一个区别。还是上面所说的，C++ 中的 struct 是对 C 中的 struct 的扩充，既然是扩充，那么它就要兼容过去 C 中 struct 应有的所有特性。例如你可以这样写：</p>
-<p>struct A &#x2F;&#x2F;定义一个struct<br>{<br>    char c1;<br>    int n2;<br>    double db3;<br>};<br>A a&#x3D;{‘p’,7,3.1415926}; &#x2F;&#x2F;定义时直接赋值<br>也就是说 struct 可以在定义的时候用 {} 赋初值。那么问题来了，class 行不行呢？将上面的 struct 改成 class，试试看。报错！噢~于是那人跳出来说，他又找到了一个区别。我们仔细看看，这真的又是一个区别吗？</p>
-<p>你试着向上面的 struct 中加入一个构造函数（或虚函数），你会发现什么？</p>
-<p>对，struct 也不能用 {} 赋初值了。</p>
-<p>的确，以 {} 的方式来赋初值，只是用一个初始化列表来对数据进行按顺序的初始化，如上面如果写成 A a&#x3D;{‘p’,7}; 则 c1,n2 被初始化，而 db3 没有。这样简单的 copy 操作，只能发生在简单的数据结构上，而不应该放在对象上。加入一个构造函数或是一个虚函数会使 struct 更体现出一种对象的特性，而使此{}操作不再有效。</p>
-<p>事实上，是因为加入这样的函数，使得类的内部结构发生了变化。而加入一个普通的成员函数呢？你会发现{}依旧可用。其实你可以将普通的函数理解成对数据结构的一种算法，这并不打破它数据结构的特性。</p>
-<p>那么，看到这里，我们发现即使是 struct 想用 {} 来赋初值，它也必须满足很多的约束条件，这些条件实际上就是让 struct 更体现出一种数据机构而不是类的特性。</p>
-<p>那为什么我们在上面仅仅将 struct 改成 class，{} 就不能用了呢？</p>
-<p>其实问题恰巧是我们之前所讲的——访问控制！你看看，我们忘记了什么？对，将 struct 改成 class 的时候，访问控制由 public 变为 private 了，那当然就不能用 {} 来赋初值了。加上一个 public，你会发现，class 也是能用 {} 的，和 struct 毫无区别！！！</p>
-<p>做个总结，从上面的区别，我们可以看出，struct 更适合看成是一个数据结构的实现体，class 更适合看成是一个对象的实现体。</p>
-<p>在类的外面，其实也可以用指针访问类内部的私有成员，例如：</p>
-<p>#include <iostream><br>using namespace std;</p>
-<p>class a    &#x2F;&#x2F; 定义了类a<br>{<br>    long a0;   &#x2F;&#x2F; 定义私有成员 a0<br>    public:<br>    a(long b)<br>    {<br>        a0&#x3D;b;<br>    }<br>    void geta()<br>    {<br>        cout&lt;&lt;a0&lt;&lt;endl;<br>    }<br>};<br>int main()<br>{<br>    a b(5);          &#x2F;&#x2F; 定义对象b，并给 b 中的 a0 赋初值<br>    long <em>p;<br>    p&#x3D;(long</em>)&b;     &#x2F;&#x2F; 令指针 p 指向 b 中前 4 个字节，在这里相当于指向 a0<br>    b.geta();        &#x2F;&#x2F; 用内部函数访问 a0<br>    cout&lt;&lt;*p&lt;&lt;endl;  &#x2F;&#x2F; 在外部直接访问 a0<br>    *p&#x3D;8;            &#x2F;&#x2F; 在外部改变 a0 的值<br>    b.geta();        &#x2F;&#x2F; 输出改变后的结果<br>    cout&lt;&lt;*p&lt;&lt;endl;<br>    return 0;<br>}<br>需要注意的是，使用这种方法虽然可以用于基于类的多态原则的一些程序开发，但违反了类的封装原则，在使用指针的类中也极不安全，所以不建议使用。</p>
-<p>#include <iostream><br>using namespace std;</p>
-<p>class Box{<br>    public:<br>        Box(){;}<br>        ~Box(){;}<br>        Box* get_address()   &#x2F;&#x2F;得到this的地址<br>        {<br>            return this;<br>        }<br>};</p>
-<p>int main(){</p>
-<pre><code>Box box1;
-Box box2;
-// Box* 定义指针p接受对象box的get_address()成员函数的返回值，并打印
+    <title>树莓派使用 OctoPrint</title>
+    <url>/2025/09/20/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8octoprint/</url>
+    <content><![CDATA[<h1 id="树莓派-OctoPi-OctoPrint-记录"><a href="#树莓派-OctoPi-OctoPrint-记录" class="headerlink" title="树莓派 OctoPi + OctoPrint 记录"></a>树莓派 OctoPi + OctoPrint 记录</h1><p>最近买了一台3D打印机，但是实验室离宿舍有一段距离，而且时开时不开，于是准备做一个上位机远程控制，同时观察打印效果：</p>
+<h2 id="1-主流控件与软件"><a href="#1-主流控件与软件" class="headerlink" title="1. 主流控件与软件"></a>1. 主流控件与软件</h2><ul>
+<li><strong>OctoPrint</strong><ul>
+<li>3D 打印机管理平台，网页控制打印机。</li>
+<li>官网: <a href="https://octoprint.org/">https://octoprint.org/</a></li>
+</ul>
+</li>
+<li><strong>Klipper</strong><ul>
+<li>高性能 3D 打印固件，支持多种主板。</li>
+<li>官网: <a href="https://www.klipper3d.org/">https://www.klipper3d.org/</a></li>
+</ul>
+</li>
+<li><strong>Moonraker &amp; MainsailOS</strong><ul>
+<li>Klipper API 与网页前端管理界面。</li>
+<li>Moonraker: <a href="https://moonraker.readthedocs.io/">https://moonraker.readthedocs.io/</a></li>
+<li>MainsailOS: <a href="https://docs.mainsail.xyz/">https://docs.mainsail.xyz/</a></li>
+</ul>
+</li>
+</ul>
+<p>查完之后发现响尾蛇X1是马林固件，上位机octopi和klipper都能使用，安卓手机或树莓派，旧电脑是主流刷写设备。OctoPrint最简单，不用刷下位机，也有远程控制工具，决定拿树莓派先试一下。</p>
+<h2 id="2-安装-OctoPrint（OctoPi-镜像）"><a href="#2-安装-OctoPrint（OctoPi-镜像）" class="headerlink" title="2. 安装 OctoPrint（OctoPi 镜像）"></a>2. 安装 OctoPrint（OctoPi 镜像）</h2><ul>
+<li><p>下载 OctoPi 镜像：</p>
+<ul>
+<li>OctoPi 官网: <a href="https://octoprint.org/download/">https://octoprint.org/download/</a></li>
+</ul>
+</li>
+<li><p>校验镜像 SHA256</p>
+</li>
+<li><p>插入树莓派，启动 OctoPi。</p>
+<blockquote>
+<p>OctoPi和普通raspberryPi使用流程类似，默认为无桌面版。</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<hr>
+<h2 id="3-配置-Wi-Fi"><a href="#3-配置-Wi-Fi" class="headerlink" title="3. 配置 Wi-Fi"></a>3. 配置 Wi-Fi</h2><ul>
+<li>编辑 <code>octopi-wpa-supplicant.txt</code> 文件：</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev</span><br><span class="line">update_config=1</span><br><span class="line">country=CN</span><br><span class="line"></span><br><span class="line">network=&#123;</span><br><span class="line">    ssid=&quot;你的SSID&quot;</span><br><span class="line">    psk=&quot;你的密码&quot;</span><br><span class="line">    key_mgmt=WPA-PSK</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面是官方文档的内容【0&#x2F;15版本后），GPT也这样说。</p>
+<ul>
+<li><p>反正我没找到这个文件，root下面有一个octopi-network.txt，里面写：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Using this file to configure your network connection is no longer supported.</span><br><span class="line">#</span><br><span class="line"># Please use wifi.nmconnection instead.</span><br></pre></td></tr></table></figure>
 
-Box* p = box1.get_address();  
-cout &lt;&lt; p &lt;&lt; endl;
+<p>那又去找 wifi.nmconnection ，果然有：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[connection]</span><br><span class="line">id=wifi</span><br><span class="line">uuid=593819b8-135a-4a3e-9611-c36cdeadbeef</span><br><span class="line">type=wifi</span><br><span class="line">interface-name=wlan0</span><br><span class="line"></span><br><span class="line">[wifi]</span><br><span class="line">mode=infrastructure</span><br><span class="line">ssid=这里写热点</span><br><span class="line"></span><br><span class="line">[wifi-security]</span><br><span class="line">auth-alg=open</span><br><span class="line">key-mgmt=wpa-psk</span><br><span class="line">psk=这里写密码</span><br><span class="line"></span><br><span class="line">[ipv4]</span><br><span class="line">method=auto</span><br><span class="line"></span><br><span class="line">[ipv6]</span><br><span class="line">addr-gen-mode=default</span><br><span class="line">method=auto</span><br><span class="line"></span><br><span class="line">[proxy]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-p = box2.get_address();
-cout &lt;&lt; p &lt;&lt; endl; 
+<p>配置好之后记得取消注释</p>
+</li>
+<li><p>重启树莓派，OctoPi 连接 Wi-Fi：</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ifconfig wlan0</span><br><span class="line">ping 192.168.43.1  <span class="comment">#这是我的，你填你的</span></span><br></pre></td></tr></table></figure>
+<p>然后就能用了，电脑打开192.168.43.1跟着octopi完成打印配置即可。</p>
+<hr>
+<h2 id="4-发现校园网认证限制"><a href="#4-发现校园网认证限制" class="headerlink" title="4. 发现校园网认证限制"></a>4. 发现校园网认证限制</h2><ul>
+<li>实验室肯定不能再用手机热点，校园网需要网页认证，无法直接联网访问 OctoPrint。</li>
+<li>决定安装 <strong>树莓派桌面环境</strong> 和 <strong>浏览器</strong>。</li>
+</ul>
+<hr>
+<h2 id="5-安装桌面和浏览器"><a href="#5-安装桌面和浏览器" class="headerlink" title="5. 安装桌面和浏览器"></a>5. 安装桌面和浏览器</h2><p>安装桌面octopi提供了一条命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">this image comes without a desktop enuironment installed because it&#x27;s not required for running OctoPrint. If you want a desktop enuironment you can install it uia </span><br><span class="line">sudo /opt/octopi/scripts/install-desktop</span><br></pre></td></tr></table></figure>
 
-return 0;
-</code></pre>
-<p>}<br>this 指针的类型可理解为 Box*。</p>
-<p>此时得到两个地址分别为 box1 和 box2 对象的地址。</p>
-<p>深夜，红色方块砌成的古怪建筑发出卡哒卡哒的物体碰撞声，先是一只手，然后是一整只手臂，最后是一颗前额饱满但有些秃顶的脑袋探了出来，与一旁的列宁半身像神似。列宁手脚并用地爬下了透明的棺材似的盒子，他似乎手脚不是很利索，习惯性地用手捂着心口。“哦，我得快些去见约瑟夫同志”，他小声念叨着偷偷摸摸地溜出了这座陵墓般的怪异的红色建筑。<br>很快，他走到了一旁的摆放着斯大林半身像的坟墓前。“嘿，约瑟夫，你在吗？我有些事想和你说！”列宁边说边敲了敲斯大林的墓碑，许久都没有回应。列宁右手撑着腰似乎有些不耐烦了，于是敲得更重了些，“嘿，同志，约瑟夫同志，我必须要和你谈谈！”说着他用力地把坟墓的顶盖推开了，这时只听见嘎吱一声，里面棺材被一下子推开了，一只宽大的手伴随着浑厚但却像是刚睡醒的嗓音从里面传了出来“哦，是伊里奇，有什么事儿吗？”<br>“我做了一个梦，我知道这是梦，梦不是现实对吧？我是说，我做了一个糟糕的梦？”<br>“你梦见什么了，伊里奇同志？”<br>“苏维埃不见了，我是说在梦里。它消失了，我梦见军阀和买办又控制了我们的祖国，我看见无产者被他们踩在脚下。我看见…”<br>“好了，我亲爱的伊里奇同志。这，显然是不可能的，赫鲁晓夫会做得很好的，这只是梦，你懂吗？这只是个梦，你现在需要做的就是回去躺下，休息。”<br>“约瑟夫，那边的旗帜上印的不是锤子和镰刀，甚至不是红色的背景！”<br>“……”<br>赫鲁晓夫站在他的半身像前，有些局促不安。他的面前站着斯大林和列宁。<br>“这是怎么回事，同志？”斯大林问道，哪怕在晚上也能看出来他的脸色很阴沉。<br>“我不道啊？”<br>列宁在一旁，仰着头，手又习惯性地撑着后腰。他伸手拉住斯大林和赫鲁晓夫，说到“哦，我明白了，我完全明白了，斯大林同志，恐怕，我们又得开始工作了。”</p>
+<p>一次竟然成功了：）</p>
+<p><img src="/../images/cat/octopi-desktop.png"></p>
+<p>重启之后在桌面环境打开vnc</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt upgrade -y</span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> apt install chromium-browser -y       <span class="comment"># 安装 Chromium 浏览器</span></span><br><span class="line"><span class="built_in">sudo</span> apt install firefox-esr -y            <span class="comment"># 可选安装 Firefox，之后如果要tailscale穿透的话国内还是火狐方便一点</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>启动桌面后使用浏览器访问校园网认证页面：</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">http://[校园网认证页面] #不多赘述</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="6-使用-OctoPrint"><a href="#6-使用-OctoPrint" class="headerlink" title="6. 使用 OctoPrint"></a>6. 使用 OctoPrint</h2><ul>
+<li>浏览器访问本地 OctoPrint：</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">http://192.168.43.80/#control</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>完成打印机连接、控制和状态监控。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>准备先试一下OctoPrint自带插件，不行的话tailscale也挺方便，就是不能和clash兼容。</p>
+<p>发现插件仓库里有<a href="https://plugins.octoprint.org/plugins/octoeverywhere/">OctoEverywhere - Free Remote Access, AI Failure Detection, And More!</a></p>
+<p>插件仓库显示不可用，但是提供了URL和pip的方法，多试几次成功安装。</p>
+<p>不知道是校园网还是什么问题，响应很慢</p>
+<p>想要用octoprint远程访问我的打印机，都连手机热点的话，<a href="http://192.168.43.80/%E6%9C%AC%E5%9C%B0%E8%AE%BF%E9%97%AE%E6%B2%A1%E9%97%AE%E9%A2%98%EF%BC%8C">http://192.168.43.80/本地访问没问题，</a><br><img src="https://cdn.jsdelivr.net/gh/o0wde0o/blog-image@main/data/037e9b2c89d41a0dc79c2b1d759c31bf.png" alt="img"><br>，尝试远程连接电脑换学校wifi，树莓派依旧连热点也可以<br><img src="https://cdn.jsdelivr.net/gh/o0wde0o/blog-image@main/data/30bd7c6af87ed05b363075ecc817e53d.png" alt="img"><br>，之后树莓派换wifi就失败了<br><img src="https://cdn.jsdelivr.net/gh/o0wde0o/blog-image@main/data/10401fbac2dd4dda343aa7c65012f0d1.png" alt="img"></p>
+<p>所以最终解决方案还是tailscale  <a href="https://tailscale.com/kb">文档 · Tailscale 文档 — Docs · Tailscale Docs</a></p>
+<p>这样似乎没法用AI监控打印质量，也许将来截取视频流再做检测。</p>
+<blockquote>
+<p>windows安装tailscale可能报错“出现严重错误”，考虑使用clash的缘故，虚拟机也安装失败（<a href="https://tailscale.com/kb/1105/other-vpns">我可以将 Tailscale 与其他 VPN 一起使用吗？· Tailscale 文档 — Can I use Tailscale alongside other VPNs? · Tailscale Docs</a>）没有太好的解决方案：（</p>
+</blockquote>
+<p>打开了一个services.msc 的 iphlpsvc ，改为自动，不知道是否有其他风险。</p>
 ]]></content>
+      <categories>
+        <category>记录</category>
+      </categories>
+      <tags>
+        <tag>树莓派</tag>
+        <tag>OctoPrint</tag>
+        <tag>3D打印</tag>
+      </tags>
   </entry>
   <entry>
     <title>分类</title>
@@ -1329,9 +1427,9 @@ return 0;
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>标签</title>
-    <url>/tags/index.html</url>
-    <content><![CDATA[]]></content>
+    <title></title>
+    <url>/live2d/model0.model3.json</url>
+    <content><![CDATA[{"Version":3,"FileReferences":{"Moc":"FileReferences_Moc_0.moc3","Textures":["textures/FileReferences_Textures_0_0.png","textures/FileReferences_Textures_1_0.png"],"Physics":"physics/FileReferences_Physics_0.physic3.json","Pose":"physics/FileReferences_Physics_0.physic3.json","Motions":{"Tap":[{"File":"motions/tap/FileReferences_Motions_Tap_0_File_0.motion3.json"}]}},"Controllers":{"ParamHit":{},"ParamLoop":{},"KeyTrigger":{},"EyeBlink":{"MinInterval":500,"MaxInterval":6000,"Items":[{"Id":"PARAM_EYE__OPEN","Min":0,"Max":1,"BlendMode":2,"Input":0}],"Enabled":true},"LipSync":{"Gain":5},"MouseTracking":{"SmoothTime":0.15,"Enabled":true},"AutoBreath":{"Enabled":true},"ExtraMotion":{"Enabled":true},"Accelerometer":{"Enabled":true},"Microphone":{},"Transform":{},"FaceTracking":{"Enabled":true},"ParamValue":{},"PartOpacity":{},"ArtmeshOpacity":{},"ArtmeshColor":{},"ArtmeshCulling":{"DefaultMode":0},"IntimacySystem":{}},"Options":{"TexFixed":true}}]]></content>
   </entry>
   <entry>
     <title></title>
@@ -2125,11 +2223,6 @@ return 0;
 </html>]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>/live2d/model0.model3.json</url>
-    <content><![CDATA[{"Version":3,"FileReferences":{"Moc":"FileReferences_Moc_0.moc3","Textures":["textures/FileReferences_Textures_0_0.png","textures/FileReferences_Textures_1_0.png"],"Physics":"physics/FileReferences_Physics_0.physic3.json","Pose":"physics/FileReferences_Physics_0.physic3.json","Motions":{"Tap":[{"File":"motions/tap/FileReferences_Motions_Tap_0_File_0.motion3.json"}]}},"Controllers":{"ParamHit":{},"ParamLoop":{},"KeyTrigger":{},"EyeBlink":{"MinInterval":500,"MaxInterval":6000,"Items":[{"Id":"PARAM_EYE__OPEN","Min":0,"Max":1,"BlendMode":2,"Input":0}],"Enabled":true},"LipSync":{"Gain":5},"MouseTracking":{"SmoothTime":0.15,"Enabled":true},"AutoBreath":{"Enabled":true},"ExtraMotion":{"Enabled":true},"Accelerometer":{"Enabled":true},"Microphone":{},"Transform":{},"FaceTracking":{"Enabled":true},"ParamValue":{},"PartOpacity":{},"ArtmeshOpacity":{},"ArtmeshColor":{},"ArtmeshCulling":{"DefaultMode":0},"IntimacySystem":{}},"Options":{"TexFixed":true}}]]></content>
-  </entry>
-  <entry>
     <title>说说</title>
     <url>/talk/index.html</url>
     <content><![CDATA[]]></content>
@@ -2141,18 +2234,23 @@ return 0;
   </entry>
   <entry>
     <title></title>
-    <url>/live2d/physics/FileReferences_Physics_0.physic3.json</url>
-    <content><![CDATA[{"Version":3,"Meta":{"PhysicsSettingCount":3,"TotalInputCount":5,"TotalOutputCount":4,"VertexCount":7,"EffectiveForces":{"Gravity":{"X":0,"Y":-1},"Wind":{"X":0,"Y":0}},"PhysicsDictionary":[{"Id":"PhysicsSetting1","Name":"1"},{"Id":"PhysicsSetting2","Name":"2"},{"Id":"PhysicsSetting3","Name":"3"}]},"PhysicsSettings":[{"Id":"PhysicsSetting1","Input":[{"Source":{"Target":"Parameter","Id":"PARAM_BREATH"},"Weight":100,"Type":"X","Reflect":false}],"Output":[{"Destination":{"Target":"Parameter","Id":"PARAM_wb"},"VertexIndex":1,"Scale":100,"Weight":100,"Type":"Angle","Reflect":false}],"Vertices":[{"Position":{"X":0,"Y":0},"Mobility":1,"Delay":1,"Acceleration":1,"Radius":0},{"Position":{"X":0,"Y":25},"Mobility":0.8,"Delay":0.95,"Acceleration":0.5,"Radius":25}],"Normalization":{"Position":{"Minimum":-10,"Default":0,"Maximum":10},"Angle":{"Minimum":-10,"Default":0,"Maximum":10}}},{"Id":"PhysicsSetting2","Input":[{"Source":{"Target":"Parameter","Id":"PARAM_ANGLE_X"},"Weight":82,"Type":"X","Reflect":false},{"Source":{"Target":"Parameter","Id":"PARAM_ANGLE_Y"},"Weight":18,"Type":"X","Reflect":false},{"Source":{"Target":"Parameter","Id":""},"Weight":100,"Type":"Angle","Reflect":false}],"Output":[{"Destination":{"Target":"Parameter","Id":"PARAM_HAIR_SIDE"},"VertexIndex":1,"Scale":2,"Weight":100,"Type":"Angle","Reflect":false},{"Destination":{"Target":"Parameter","Id":"PARAM_HAIR_BACK"},"VertexIndex":2,"Scale":2,"Weight":100,"Type":"Angle","Reflect":false}],"Vertices":[{"Position":{"X":0,"Y":0},"Mobility":1,"Delay":1,"Acceleration":1,"Radius":0},{"Position":{"X":0,"Y":12},"Mobility":0.9,"Delay":0.8,"Acceleration":1.5,"Radius":12},{"Position":{"X":0,"Y":20},"Mobility":0.7,"Delay":0.8,"Acceleration":2,"Radius":8}],"Normalization":{"Position":{"Minimum":-10,"Default":0,"Maximum":10},"Angle":{"Minimum":-10,"Default":0,"Maximum":10}}},{"Id":"PhysicsSetting3","Input":[{"Source":{"Target":"Parameter","Id":"PARAM_EYE__OPEN"},"Weight":100,"Type":"X","Reflect":false}],"Output":[{"Destination":{"Target":"Parameter","Id":"PARAM_HAIR_FRONT"},"VertexIndex":1,"Scale":1,"Weight":100,"Type":"Angle","Reflect":true}],"Vertices":[{"Position":{"X":0,"Y":0},"Mobility":1,"Delay":1,"Acceleration":1,"Radius":0},{"Position":{"X":0,"Y":5},"Mobility":0.95,"Delay":1,"Acceleration":1,"Radius":5}],"Normalization":{"Position":{"Minimum":-10,"Default":0,"Maximum":10},"Angle":{"Minimum":-10,"Default":0,"Maximum":10}}}]}]]></content>
-  </entry>
-  <entry>
-    <title></title>
     <url>/talk/talk.html</url>
     <content><![CDATA[<p>这里是我第一条说说。</p>
 ]]></content>
   </entry>
   <entry>
+    <title>标签</title>
+    <url>/tags/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title></title>
     <url>/live2d/motions/tap/FileReferences_Motions_Tap_0_File_0.motion3.json</url>
     <content><![CDATA[{"Version":3,"Meta":{"Duration":2.467,"Fps":30,"Loop":true,"AreBeziersRestricted":true,"CurveCount":8,"TotalSegmentCount":65,"TotalPointCount":201,"UserDataCount":0,"TotalUserDataSize":0},"Curves":[{"Target":"Parameter","Id":"PARAM_ANGLE_X","Segments":[0,30,1,0.167,30,0.333,-30,0.5,-30,1,0.667,-30,0.833,30,1,30,1,1.167,30,1.333,-30,1.5,-30,1,1.667,-30,1.833,30,2,30,1,2.056,30,2.111,30,2.167,30,1,2.267,30,2.367,0,2.467,0]},{"Target":"Parameter","Id":"PARAM_ANGLE_Y","Segments":[0,-30,1,0.078,-30,0.156,30,0.233,30,1,0.322,30,0.411,-30,0.5,-30,1,0.589,-30,0.678,30,0.767,30,1,0.844,30,0.922,-30,1,-30,1,1.078,-30,1.156,30,1.233,30,1,1.322,30,1.411,-30,1.5,-30,1,1.589,-30,1.678,30,1.767,30,1,1.844,30,1.922,-30,2,-30,1,2.056,-30,2.111,-30,2.167,-30,1,2.267,-30,2.367,0,2.467,0]},{"Target":"Parameter","Id":"PARAM_EYE__OPEN","Segments":[0,0,1,0.167,0,0.333,0,0.5,0,1,0.556,0,0.611,0.233,0.667,0.6,1,0.711,0.894,0.756,1,0.8,1,1,1.078,1,1.356,1,1.633,1,1,1.711,1,1.789,0.944,1.867,0.6,1,1.911,0.404,1.956,0,2,0,1,2.056,0,2.111,0,2.167,0,1,2.267,0,2.367,1,2.467,1]},{"Target":"Parameter","Id":"PARAM_HAIR_FRONT","Segments":[0,0,1,0.067,0,0.133,0.8,0.2,0.8,1,0.244,0.8,0.289,-0.4,0.333,-0.4,1,0.389,-0.4,0.444,-0.364,0.5,0,1,0.567,0.437,0.633,0.946,0.7,0.946,1,0.767,0.946,0.833,-0.806,0.9,-0.806,1,0.989,-0.806,1.078,0.296,1.167,0.296,1,1.256,0.296,1.344,-0.9,1.433,-0.9,1,1.511,-0.9,1.589,0.9,1.667,0.9,1,1.756,0.9,1.844,-0.821,1.933,-0.821,1,1.956,-0.821,1.978,0,2,0,1,2.056,0,2.111,0,2.167,0,1,2.267,0,2.367,0,2.467,0]},{"Target":"Parameter","Id":"PARAM_wb","Segments":[0,-15,1,0.167,-15,0.333,-30,0.5,-30,1,0.833,-30,1.167,30,1.5,30,1,1.667,30,1.833,-15,2,-15,1,2.056,-25,2.111,-30,2.167,-30,1,2.267,-30,2.367,0,2.467,0]},{"Target":"Parameter","Id":"PARAM_BREATH","Segments":[0,0,1,0.333,0,0.667,1,1,1,1,1.333,1,1.667,0,2,0,1,2.056,0,2.111,0,2.167,0,0,2.467,0]},{"Target":"Parameter","Id":"PARAM_HAIR_SIDE","Segments":[0,0.7,1,0.078,0.7,0.156,0.7,0.233,0.7,1,0.322,0.7,0.411,-0.5,0.5,-0.5,1,0.589,-0.5,0.678,-0.451,0.767,0,1,0.844,0.395,0.922,1,1,1,1,1.078,1,1.156,0.395,1.233,0,1,1.322,-0.451,1.411,-0.5,1.5,-0.5,1,1.589,-0.5,1.678,-0.404,1.767,0,1,1.844,0.353,1.922,0.7,2,0.7,1,2.056,0.7,2.111,0.7,2.167,0.7,1,2.267,0.7,2.367,0,2.467,0]},{"Target":"Parameter","Id":"PARAM_HAIR_BACK","Segments":[0,0.5,1,0.078,0.5,0.156,-0.4,0.233,-0.4,1,0.322,-0.4,0.411,1,0.5,1,1,0.589,1,0.678,-0.5,0.767,-0.5,1,0.856,-0.5,0.944,-0.451,1.033,0,1,1.111,0.395,1.189,1,1.267,1,1,1.344,1,1.422,0.619,1.5,0,1,1.589,-0.708,1.678,-1,1.767,-1,1,1.844,-1,1.922,0.5,2,0.5,1,2.056,0.5,2.111,0.5,2.167,0.5,1,2.267,0.5,2.367,0,2.467,0]}]}]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/live2d/physics/FileReferences_Physics_0.physic3.json</url>
+    <content><![CDATA[{"Version":3,"Meta":{"PhysicsSettingCount":3,"TotalInputCount":5,"TotalOutputCount":4,"VertexCount":7,"EffectiveForces":{"Gravity":{"X":0,"Y":-1},"Wind":{"X":0,"Y":0}},"PhysicsDictionary":[{"Id":"PhysicsSetting1","Name":"1"},{"Id":"PhysicsSetting2","Name":"2"},{"Id":"PhysicsSetting3","Name":"3"}]},"PhysicsSettings":[{"Id":"PhysicsSetting1","Input":[{"Source":{"Target":"Parameter","Id":"PARAM_BREATH"},"Weight":100,"Type":"X","Reflect":false}],"Output":[{"Destination":{"Target":"Parameter","Id":"PARAM_wb"},"VertexIndex":1,"Scale":100,"Weight":100,"Type":"Angle","Reflect":false}],"Vertices":[{"Position":{"X":0,"Y":0},"Mobility":1,"Delay":1,"Acceleration":1,"Radius":0},{"Position":{"X":0,"Y":25},"Mobility":0.8,"Delay":0.95,"Acceleration":0.5,"Radius":25}],"Normalization":{"Position":{"Minimum":-10,"Default":0,"Maximum":10},"Angle":{"Minimum":-10,"Default":0,"Maximum":10}}},{"Id":"PhysicsSetting2","Input":[{"Source":{"Target":"Parameter","Id":"PARAM_ANGLE_X"},"Weight":82,"Type":"X","Reflect":false},{"Source":{"Target":"Parameter","Id":"PARAM_ANGLE_Y"},"Weight":18,"Type":"X","Reflect":false},{"Source":{"Target":"Parameter","Id":""},"Weight":100,"Type":"Angle","Reflect":false}],"Output":[{"Destination":{"Target":"Parameter","Id":"PARAM_HAIR_SIDE"},"VertexIndex":1,"Scale":2,"Weight":100,"Type":"Angle","Reflect":false},{"Destination":{"Target":"Parameter","Id":"PARAM_HAIR_BACK"},"VertexIndex":2,"Scale":2,"Weight":100,"Type":"Angle","Reflect":false}],"Vertices":[{"Position":{"X":0,"Y":0},"Mobility":1,"Delay":1,"Acceleration":1,"Radius":0},{"Position":{"X":0,"Y":12},"Mobility":0.9,"Delay":0.8,"Acceleration":1.5,"Radius":12},{"Position":{"X":0,"Y":20},"Mobility":0.7,"Delay":0.8,"Acceleration":2,"Radius":8}],"Normalization":{"Position":{"Minimum":-10,"Default":0,"Maximum":10},"Angle":{"Minimum":-10,"Default":0,"Maximum":10}}},{"Id":"PhysicsSetting3","Input":[{"Source":{"Target":"Parameter","Id":"PARAM_EYE__OPEN"},"Weight":100,"Type":"X","Reflect":false}],"Output":[{"Destination":{"Target":"Parameter","Id":"PARAM_HAIR_FRONT"},"VertexIndex":1,"Scale":1,"Weight":100,"Type":"Angle","Reflect":true}],"Vertices":[{"Position":{"X":0,"Y":0},"Mobility":1,"Delay":1,"Acceleration":1,"Radius":0},{"Position":{"X":0,"Y":5},"Mobility":0.95,"Delay":1,"Acceleration":1,"Radius":5}],"Normalization":{"Position":{"Minimum":-10,"Default":0,"Maximum":10},"Angle":{"Minimum":-10,"Default":0,"Maximum":10}}}]}]]></content>
   </entry>
 </search>
